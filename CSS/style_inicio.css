@@ -1,0 +1,117 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://e0.pxfuel.com/wallpapers/815/38/desktop-wallpaper-group-of-minimalistic-4096x2304-clean.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Overlay para mejorar la legibilidad del texto */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+            z-index: 1;
+        }
+
+        .start-container {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        .start-container h1 {
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: textFadeIn 2s ease-in-out forwards;
+        }
+
+        .start-container .subtitle {
+            font-size: 24px;
+            font-style: italic;
+            margin-top: 10px;
+            text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            animation: textFadeIn 2s 1s forwards;
+        }
+
+        .start-container p {
+            font-size: 18px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: textFadeIn 2s 2s forwards;
+        }
+
+        /* Animaciones */
+        @keyframes textFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efecto de hover en el contenedor */
+        .start-container:hover h1,
+        .start-container:hover .subtitle,
+        .start-container:hover p {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .start-container h1 {
+                font-size: 40px;
+                letter-spacing: 4px;
+            }
+
+            .start-container .subtitle {
+                font-size: 18px;
+            }
+
+            .start-container p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .start-container h1 {
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+
+            .start-container .subtitle {
+                font-size: 16px;
+            }
+
+            .start-container p {
+                font-size: 12px;
+            }
+        }

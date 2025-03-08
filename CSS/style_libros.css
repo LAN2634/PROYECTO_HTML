@@ -1,0 +1,70 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Efecto parallax */
+.parallax {
+    background-image: url('https://www.hdwallpapers.in/download/sunset_minimal_landscape_4k-HD.jpg'); /* Imagen de fondo */
+    background-attachment: fixed; /* Fondo fijo para el efecto parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; /* Altura completa de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.parallax-content {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1; /* Asegura que el contenido esté sobre el degradado */
+}
+
+.parallax-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.parallax-content p {
+    font-size: 1.2rem;
+}
+
+/* Degradado en la transición */
+.transition-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Altura del degradado */
+    background: linear-gradient(to bottom, transparent, rgba(51, 51, 51, 1)); /* Degradado hacia el color de la sección de texto */
+    z-index: 0; /* Detrás del contenido */
+}
+
+/* Contenido adicional */
+.content {
+    padding: 60px 20px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}

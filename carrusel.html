@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel Continuo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px; /* Espacio entre imágenes */
+            animation: scroll 10s linear infinite;
+        }
+
+        .carousel-track img {
+            width: auto;
+            height: 300px; /* Ajusta la altura según lo necesites */
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 2"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 3"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 4"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 5"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 6"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 7"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 8"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 9"></div>
+            <div class="swiper-slide"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 10"></div>
+        </div>
+    </div>
+
+</body>
+</html>
