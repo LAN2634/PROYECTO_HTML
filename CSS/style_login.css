@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('https://i.redd.it/c3uhsgo1vx541.jpg') no-repeat center center fixed;
+            background: url('../IMG/c3uhsgo1vx541.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 

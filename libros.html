@@ -1,34 +1,108 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página con Efecto Parallax y Degradado</title>
-    <link rel="stylesheet" href="CSS/style_index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrusel Expandible</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        /* Contenedor del carrusel */
+        .carousel {
+            display: flex;
+            gap: 5px;
+            width: 90vw;
+            height: 70vh;
+        }
+
+        /* Elementos del carrusel */
+        .carousel-item {
+            flex: 0.2;
+            height: 100%;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: flex 0.5s ease;
+            position: relative;
+        }
+
+        /* Expandir al pasar el cursor */
+        .carousel-item:hover {
+            flex: 1;
+        }
+
+        /* Contenido de la descripción */
+        .content {
+            opacity: 0;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-item:hover .content {
+            opacity: 1;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Sección con efecto parallax -->
-    <div class="parallax">
-        <div class="parallax-content">
-            <h1>Bienvenido a mi Página</h1>
-            <p>Desplázate hacia abajo para ver el efecto parallax y el degradado.</p>
+
+    <div class="carousel">
+        <div class="carousel-item" style="background-image: url('https://wallpapercave.com/wp/wp8573800.jpg');">
+            <div class="content">
+                <h2>Título 1</h2>
+                <p>Descripción de la imagen 1.</p>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://img.asmedia.epimg.net/resizer/v2/ZZQZCGD2GBIEDFIFMIDLIPP45Q.jpg?auth=ea1a7efe6acbcce82a37b57386b3eaa6dfdfd229166ecf2e10e28ebc5da432ad&width=360');">
+            <div class="content">
+                <h2>Título 2</h2>
+                <p>Descripción de la imagen 2.</p>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://es.web.img3.acsta.net/newsv7/22/09/29/10/27/3610249.jpg');">
+            <div class="content">
+                <h2>Título 3</h2>
+                <p>Descripción de la imagen 3.</p>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://cdn.superaficionados.com/imagenes/51-animes-de-accion-one-punch-man-cke.jpg');">
+            <div class="content">
+                <h2>Título 4</h2>
+                <p>Descripción de la imagen 4.</p>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://media.es.wired.com/photos/6713e003d4042b1e4ceb89f9/master/w_1600%2Cc_limit/dandadan-anime-2.jpg');">
+            <div class="content">
+                <h2>Título 5</h2>
+                <p>Descripción de la imagen 5.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Contenido adicional -->
-    <div class="content">
-        <h2>Sección 1</h2>
-        <p>Este es un ejemplo de contenido adicional. El efecto parallax se aplica solo al fondo.</p>
-    </div>
-
-    <div class="content">
-        <h2>Sección 2</h2>
-        <p>Más contenido para que puedas hacer scroll y ver el efecto parallax en acción.</p>
-    </div>
-
-    <div class="content">
-        <h2>Sección 3</h2>
-        <p>¡El fondo se mueve más lento que el contenido y el degradado cambia suavemente!</p>
-    </div>
 </body>
 </html>

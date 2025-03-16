@@ -1,0 +1,49 @@
+/* ===== Estilo específico para el carrusel expandible ===== */
+
+/* Evita conflictos usando clases específicas */
+.carousel-expan {
+    display: flex;
+    gap: 5px;
+    width: 90vw;
+    height: 70vh;
+}
+
+.carousel-expan-item {
+    flex: 0.2;
+    height: 100%;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+    position: relative;
+}
+
+.carousel-expan-item:hover {
+    flex: 1;
+}
+
+.carousel-expan-content {
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-expan-item:hover .carousel-expan-content {
+    opacity: 1;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}

@@ -50,7 +50,7 @@
             background-position: left center;
             box-shadow: 0 30px 10px -20px rgba(0, 0, 0, .2);
             transition: background .3s ease;
-            margin-right: 50px;
+            margin-right: 10px;
             /* Espacio entre el botón y el ícono de hamburguesa */
         }
 
@@ -155,7 +155,8 @@
                 transform: translateX(-50%);
             }
         }
-/*-------------------------------------------------------------------------------------------------------*/
+
+        /*-------------------------------------------------------------------------------------------------------*/
         /* Secciones de recomendaciones */
         .seccion {
             margin: 40px 20px;
@@ -383,8 +384,275 @@
                 background-color: var(--online-status);
             }
         }
-        /*cn*/
 
+        /*Button search*/
+        /* From Uiverse.io by satyamchaudharydev */
+        /* this is a recreation of twitter search in css */
+        .form {
+            --input-text-color: #fff;
+            --input-bg-color: #283542;
+            --focus-input-bg-color: transparent;
+            --text-color: #ff7b58;
+            --active-color: #ff7b58;
+            --width-of-input: 200px;
+            --inline-padding-of-input: 1.2em;
+            --gap: 0.9rem;
+        }
+
+        /* form style */
+        .form {
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            width: var(--width-of-input);
+            position: relative;
+            isolation: isolate;
+            margin-right: 10px;
+
+        }
+
+        /* a fancy bg for showing background and border when focus. */
+        .fancy-bg {
+            position: absolute;
+            width: 100%;
+            inset: 0;
+            background: var(--input-bg-color);
+            border-radius: 40px;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+
+        /* label styling */
+        label {
+            width: 100%;
+            padding: 0.8em;
+            height: 30px;
+            padding-inline: var(--inline-padding-of-input);
+            display: flex;
+            align-items: center;
+        }
+
+        .search,
+        .close-btn {
+            position: absolute;
+        }
+
+        /* styling search-icon */
+        .search {
+            fill: var(--text-color);
+            left: var(--inline-padding-of-input);
+        }
+
+        /* svg -- size */
+        svg {
+            width: 17px;
+            display: block;
+        }
+
+        /* styling of close button */
+        .close-btn {
+            border: none;
+            right: var(--inline-padding-of-input);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 0.1em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--active-color);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* styling of input */
+        .input {
+            color: var(--input-text-color);
+            width: 100%;
+            margin-inline: min(2em, calc(var(--inline-padding-of-input) + var(--gap)));
+            background: none;
+            border: none;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        .input::placeholder {
+            color: var(--text-color)
+        }
+
+        /* input background change in focus */
+        .input:focus~.fancy-bg {
+            border: 1px solid var(--active-color);
+            background: var(--focus-input-bg-color);
+        }
+
+        /* search icon color change in focus */
+        .input:focus~.search {
+            fill: var(--active-color);
+        }
+
+        /* showing close button when typing */
+        .input:valid~.close-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+            -webkit-transition-delay: 9999s;
+        }
+
+        /*---------------------------------------------------------------------------*/
+        /*follow me*/
+        /* From Uiverse.io by ahmed150up */ 
+.card {
+    display: flex;
+    height: 70px;
+    width: 270px;
+  }
+  
+  .card svg {
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 0.25s;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  .card .social-link1,.card .social-link2,.card .social-link3,.card .social-link4 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    color: whitesmoke;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 50px;
+  }
+  
+  .card svg {
+    transform: scale(1);
+  }
+  
+  .card .social-link1:hover {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    animation: bounce_613 0.4s linear;
+  }
+  
+  .card .social-link2:hover {
+    background-color: #00ccff;
+    animation: bounce_613 0.4s linear;
+  }
+  
+  .card .social-link3:hover {
+    background-color: #5865f2;
+    animation: bounce_613 0.4s linear;
+  }
+  
+  .card .social-link4:hover {
+    background-color: #12a50b;
+    animation: bounce_613 0.4s linear;
+  }
+  
+  @keyframes bounce_613 {
+    40% {
+      transform: scale(1.4);
+    }
+  
+    60% {
+      transform: scale(0.8);
+    }
+  
+    80% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+        /* Contenedor del carrusel */
+        .carousel_ex {
+            display: flex;
+            gap: 5px;
+            width: 90vw;
+            height: 70vh;
+        }
+
+        /* Elementos del carrusel */
+        .carousel-item {
+            flex: 0.2;
+            height: 100%;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: flex 0.5s ease;
+            position: relative;
+        }
+
+        /* Expandir al pasar el cursor */
+        .carousel-item:hover {
+            flex: 1;
+        }
+
+        /* Contenido de la descripción */
+        .content {
+            opacity: 0;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #ff7b58;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-item:hover .content {
+            opacity: 1;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        hr {
+            border: none;
+            /* Elimina el borde predeterminado */
+            height: 2px;
+            /* Grosor */
+            background-color: #ff5733;
+            /* Color */
+        }
     </style>
 </head>
 
@@ -399,6 +667,30 @@
                 </svg>
                 Unlock Pro
             </button>
+            <!-- From Uiverse.io by satyamchaudharydev -->
+            <form class="form">
+                <label for="search">
+                    <input class="input" type="text" required="" placeholder="Search Anime" id="search">
+                    <div class="fancy-bg"></div>
+                    <div class="search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"
+                            class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                            <g>
+                                <path
+                                    d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                    <button class="close-btn" type="reset">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </label>
+            </form>
             <!-- From Uiverse.io by Li-Deheng -->
             <button id="btn-message" class="button-message">
 
@@ -428,10 +720,45 @@
                     <li><a href="index.html">Inicio</a></li>
                     <hr>
                     <li><a href="libros.html">Libros</a></li>
+                    <li><a href="anime.html">Anime</a></li>
                     <li><a href="#">Acerca de</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Contactanos</a></li>
+                    <hr>
                 </ul>
-               
+                <!-- From Uiverse.io by ahmed150up -->
+                <div class="card">
+                    <a class="social-link1">
+                        <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="social-link2">
+                        <svg viewBox="0 0 16 16" class="bi bi-twitter" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                            </path>
+                        </svg> </a>
+                    <a class="social-link3">
+                        <svg viewBox="0 0 16 16" class="bi bi-discord" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="social-link4">
+                        <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
             </nav>
     </header>
 
@@ -476,18 +803,71 @@
                 alt="Libro 2">
             <img src="https://marketplace.canva.com/EAExaaHVJ3g/1/0/1024w/canva-monocrom%C3%A1tico-suspenso-wattpad-portada-HarfxmNo7mc.jpg"
                 alt="Libro 3">
-            <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1">
+            <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4"><img
+                src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1">
             <img src="https://marketplace.canva.com/EAF55Kx4v24/1/0/1003w/canva-portada-libro-fantas%C3%ADa-ilustrativo-verde-_pp1hAU8znQ.jpg"
                 alt="Libro 2">
             <img src="https://marketplace.canva.com/EAExaaHVJ3g/1/0/1024w/canva-monocrom%C3%A1tico-suspenso-wattpad-portada-HarfxmNo7mc.jpg"
                 alt="Libro 3">
-            <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4"><img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1">
+            <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4"><img
+                src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1">
             <img src="https://marketplace.canva.com/EAF55Kx4v24/1/0/1003w/canva-portada-libro-fantas%C3%ADa-ilustrativo-verde-_pp1hAU8znQ.jpg"
                 alt="Libro 2">
             <img src="https://marketplace.canva.com/EAExaaHVJ3g/1/0/1024w/canva-monocrom%C3%A1tico-suspenso-wattpad-portada-HarfxmNo7mc.jpg"
                 alt="Libro 3">
             <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4">
 
+        </div>
+        <br>
+        <br>
+        <hr>
+        <!---Esto es el carrusel explandible-->
+        <div class="seccion">
+            <h2>Un poco de todo</h2>
+        </div>
+        <div class="carousel_ex">
+            <div class="carousel-item"
+                style="background-image: url('https://thathashtagshow.com/wp-content/uploads/2023/02/ChainsawMan_16x9.png');">
+                <div class="content">
+                    <h2>Título 1</h2>
+                    <p>Descripción de la imagen 1.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://www.mundodeportivo.com/alfabeta/hero/2021/07/Cual-es-el-orden-para-ver-The-Seven-Deadly-Sins-1.jpg?width=1200&aspect_ratio=16:9');">
+                <div class="content">
+                    <h2>Título 2</h2>
+                    <p>Descripción de la imagen 2.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/f3ab185e47b13fa4f121e510927adda0956bee1413dcca8a853c41ec84f17058.jpg');">
+                <div class="content">
+                    <h2>Título 3</h2>
+                    <p>Descripción de la imagen 3.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/01/1000050845.jpg');">
+                <div class="content">
+                    <h2>Título 4</h2>
+                    <p>Descripción de la imagen 4.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://tintuc-divineshop.cdn.vccloud.vn/wp-content/uploads/2024/09/1-59.jpg');">
+                <div class="content">
+                    <h2>Título 5</h2>
+                    <p>Descripción de la imagen 5.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://staticg.sportskeeda.com/editor/2023/05/d7e3d-16850183241711-1920.jpg?w=640');">
+                <div class="content">
+                    <h2>Título 4</h2>
+                    <p>Descripción de la imagen 4.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -542,7 +922,6 @@
             <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Mixto 4">
         </div>
     </div>
-
     <script>
         // Menú de hamburguesa
         const menuIcon = document.getElementById('menuIcon');
@@ -608,6 +987,18 @@
                 const walk = (x - startX) * 2;
                 seccion.scrollLeft = scrollLeft - walk;
             });
+        });
+
+        // Redirección al hacer clic en el botón de perfil
+        const btnMessage = document.getElementById('btn-message');
+        btnMessage.addEventListener('click', () => {
+            window.location.href = 'perfil.html'; // Redirige a perfil.html
+        });
+
+        // Redirección al hacer clic en el nombre "UNIMIX"
+        const projectTitle = document.querySelector('.project-title');
+        projectTitle.addEventListener('click', () => {
+            window.location.href = 'index.html'; // Redirige a index.html
         });
     </script>
 </body>

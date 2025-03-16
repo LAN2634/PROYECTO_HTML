@@ -2,7 +2,7 @@
 /* Estilo para el cuerpo del documento */
 body {
     font-family: Arial, sans-serif; /* Fuente general */
-    background: url('https://cdn.wallpaper.tn/large/Digital-Art-Wallpaper-4K-135547.jpg') no-repeat center center fixed; /* Nueva imagen de fondo */
+    background: url('../IMG/Digital-Art-Wallpaper-4K-135547.jpg') no-repeat center center fixed; /* Nueva imagen de fondo */
     background-size: cover; /* Ajuste del tamaño de fondo */
     display: flex; /* Diseño flexible */
     justify-content: center; /* Centrar contenido horizontalmente */
