@@ -1,0 +1,1012 @@
+ /* Estilos generales */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(30, 36, 34);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Menú de hamburguesa fijo */
+header {
+    background-color: #1c1c1c;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid #ff7b58;
+
+}
+
+/* Centrar el título "ANIME" */
+.project-tite {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 24px;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* Botón Unlock Pro */
+.button {
+    width: fit-content;
+    display: flex;
+    padding: 1.2em 1rem;
+    cursor: pointer;
+    gap: 0.4rem;
+    font-weight: bold;
+    border-radius: 30px;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+    background-size: 300%;
+    color: #fff;
+    border: none;
+    background-position: left center;
+    box-shadow: 0 30px 10px -20px rgba(0, 0, 0, .2);
+    transition: background .3s ease;
+    margin-right: 10px;
+}
+
+.button:hover {
+    background-size: 320%;
+    background-position: right center;
+}
+
+.button svg {
+    width: 23px;
+    fill: #f09f33;
+    transition: .3s ease;
+}
+
+.button:hover svg {
+    fill: #fff;
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 25px;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(51, 51, 51, 0.95);
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 60px 20px;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.menu ul li a:hover {
+    color: #ff7b58;
+}
+
+.menu.active {
+    right: 0;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+/* Parallax */
+.parallax {
+    height: 100vh;
+    background-image: url('https://wallpapercave.com/wp/wp8573800.jpg');
+    /* Imagen de fondo */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/*------------------------------------------------------------------------*/
+/* Carrusel */
+.carousel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-track img {
+    width: auto;
+    height: 300px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-track img:hover {
+    transform: translateY(-10px) scale(1.05);
+    /* Efecto de levantar y acercar */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Sombra más pronunciada */
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/* Nube de humo */
+.smoke-effect {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, rgba(30, 36, 34, 1), rgba(30, 36, 34, 0));
+    z-index: 1;
+}
+
+/*----------------------------------------------------------------------------------------------*/
+
+/* Secciones de recomendaciones */
+.seccion {
+    margin: 100px 20px;
+}
+
+.seccion h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contenedor-recomendaciones {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    cursor: grab;
+}
+
+.contenedor-recomendaciones::-webkit-scrollbar {
+    height: 8px;
+}
+
+.contenedor-recomendaciones::-webkit-scrollbar-thumb {
+    background-color: #ff7b58;
+    border-radius: 4px;
+}
+
+.contenedor-recomendaciones::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+.contenedor-recomendaciones img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.contenedor-recomendaciones img:hover {
+    transform: scale(1.05);
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+/* ICON PERFIL */
+#btn-message {
+    --text-color: rgb(255, 255, 255);
+    --bg-color-sup: #5e5e5e;
+    --bg-color: #2b2b2b;
+    --bg-hover-color: #111010;
+    --online-status: #00da00;
+    --font-size: 16px;
+    --btn-transition: all 0.2s ease-out;
+}
+
+.button-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 400 var(--font-size) Helvetica Neue, sans-serif;
+    box-shadow: 0 0 2.17382px rgba(0, 0, 0, .049), 0 1.75px 6.01034px rgba(0, 0, 0, .07), 0 3.63px 14.4706px rgba(0, 0, 0, .091), 0 22px 48px rgba(0, 0, 0, .14);
+    background-color: var(--bg-color);
+    border-radius: 68px;
+    cursor: pointer;
+    padding: 6px 10px 6px 6px;
+    width: fit-content;
+    height: 40px;
+    border: 0;
+    overflow: hidden;
+    position: relative;
+    transition: var(--btn-transition);
+    margin-right: 100px;
+    background-position: left center;
+
+}
+
+.button-message:hover {
+    height: 56px;
+    padding: 8px 20px 8px 8px;
+    background-color: var(--bg-hover-color);
+    transition: var(--btn-transition);
+}
+
+.button-message:active {
+    transform: scale(0.99);
+}
+
+.content-avatar {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    transition: var(--btn-transition);
+    position: relative;
+}
+
+.button-message:hover .content-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--bg-color-sup);
+}
+
+.user-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-user {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    right: 1px;
+    bottom: 1px;
+    border-radius: 50%;
+    outline: solid 2px var(--bg-color);
+    background-color: var(--online-status);
+    transition: var(--btn-transition);
+    animation: active-status 2s ease-in-out infinite;
+}
+
+.button-message:hover .status-user {
+    width: 10px;
+    height: 10px;
+    right: 1px;
+    bottom: 1px;
+    outline: solid 3px var(--bg-hover-color);
+}
+
+.notice-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 8px;
+    text-align: initial;
+    color: var(--text-color);
+}
+
+.username {
+    letter-spacing: -6px;
+    height: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: var(--btn-transition);
+}
+
+.user-id {
+    font-size: 12px;
+    letter-spacing: -6px;
+    height: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--btn-transition);
+}
+
+.lable-message {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transform: scaleY(1);
+    transition: var(--btn-transition);
+}
+
+.button-message:hover .username {
+    height: auto;
+    letter-spacing: normal;
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--btn-transition);
+}
+
+.button-message:hover .user-id {
+    height: auto;
+    letter-spacing: normal;
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--btn-transition);
+}
+
+.button-message:hover .lable-message {
+    height: 0;
+    transform: scaleY(0);
+    transition: var(--btn-transition);
+}
+
+.lable-message,
+.username {
+    font-weight: 600;
+}
+
+.number-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 8px;
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-color-sup);
+    border-radius: 20px;
+}
+
+@keyframes active-status {
+    0% {
+        background-color: var(--online-status);
+    }
+
+    33.33% {
+        background-color: #93e200;
+    }
+
+    66.33% {
+        background-color: #93e200;
+    }
+
+    100% {
+        background-color: var(--online-status);
+    }
+}
+
+/*-------------------------------------------------------------------------------------*/
+/*Button search*/
+/* From Uiverse.io by satyamchaudharydev */
+/* this is a recreation of twitter search in css */
+.form {
+    --input-text-color: #fff;
+    --input-bg-color: #283542;
+    --focus-input-bg-color: transparent;
+    --text-color: #ff7b58;
+    --active-color: #ff7b58;
+    --width-of-input: 200px;
+    --inline-padding-of-input: 1.2em;
+    --gap: 0.9rem;
+}
+
+/* form style */
+.form {
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: var(--width-of-input);
+    position: relative;
+    isolation: isolate;
+    margin-right: 10px;
+
+}
+
+/* a fancy bg for showing background and border when focus. */
+.fancy-bg {
+    position: absolute;
+    width: 100%;
+    inset: 0;
+    background: var(--input-bg-color);
+    border-radius: 40px;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+/* label styling */
+label {
+    width: 100%;
+    padding: 0.8em;
+    height: 30px;
+    padding-inline: var(--inline-padding-of-input);
+    display: flex;
+    align-items: center;
+}
+
+.search,
+.close-btn {
+    position: absolute;
+}
+
+/* styling search-icon */
+.search {
+    fill: var(--text-color);
+    left: var(--inline-padding-of-input);
+}
+
+/* svg -- size */
+svg {
+    width: 17px;
+    display: block;
+}
+
+/* styling of close button */
+.close-btn {
+    border: none;
+    right: var(--inline-padding-of-input);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 0.1em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--active-color);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* styling of input */
+.input {
+    color: var(--input-text-color);
+    width: 100%;
+    margin-inline: min(2em, calc(var(--inline-padding-of-input) + var(--gap)));
+    background: none;
+    border: none;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--text-color)
+}
+
+/* input background change in focus */
+.input:focus~.fancy-bg {
+    border: 1px solid var(--active-color);
+    background: var(--focus-input-bg-color);
+}
+
+/* search icon color change in focus */
+.input:focus~.search {
+    fill: var(--active-color);
+}
+
+/* showing close button when typing */
+.input:valid~.close-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+}
+
+/* From Uiverse.io by ahmed150up */
+.card {
+    display: flex;
+    height: 70px;
+    width: 270px;
+}
+
+.card svg {
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 0.25s;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.card .social-link1,
+.card .social-link2,
+.card .social-link3,
+.card .social-link4 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    color: whitesmoke;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 50px;
+}
+
+.card svg {
+    transform: scale(1);
+}
+
+.card .social-link1:hover {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    animation: bounce_613 0.4s linear;
+}
+
+.card .social-link2:hover {
+    background-color: #00ccff;
+    animation: bounce_613 0.4s linear;
+}
+
+.card .social-link3:hover {
+    background-color: #5865f2;
+    animation: bounce_613 0.4s linear;
+}
+
+.card .social-link4:hover {
+    background-color: #12a50b;
+    animation: bounce_613 0.4s linear;
+}
+
+@keyframes bounce_613 {
+    40% {
+        transform: scale(1.4);
+    }
+
+    60% {
+        transform: scale(0.8);
+    }
+
+    80% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+/* Contenedor del carrusel */
+.carousel_ex {
+    display: flex;
+    gap: 5px;
+    width: 90vw;
+    height: 70vh;
+}
+
+/* Elementos del carrusel */
+.carousel-item {
+    flex: 0.2;
+    height: 100%;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+    position: relative;
+}
+
+/* Expandir al pasar el cursor */
+.carousel-item:hover {
+    flex: 1;
+}
+
+/* Contenido de la descripción */
+.content {
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #ff7b58;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-item:hover .content {
+    opacity: 1;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+hr {
+    border: none;
+    /* Elimina el borde predeterminado */
+    height: 2px;
+    /* Grosor */
+    background-color: #ff5733;
+    /* Color */
+}
+/* From Uiverse.io by vinodjangid07 */
+.Btn {
+    width: 130px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    border: none;
+    color: white;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(255, 253, 253, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+}
+
+.svgIcon {
+    width: 16px;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.Btn::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+}
+
+.Btn:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%, -50%);
+    border-radius: 0;
+}
+
+.Btn:active {
+    transform: translate(5px, 5px);
+    transition-duration: .3s;
+}
+
+/*---------------------------------------------------------------------*/
+
+/* Estilo del fondo oscuro de la modal */
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilo de la modal */
+.modal {
+    background-color: rgb(30, 29, 29);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del título de la modal */
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ff5733;
+}
+
+/* Estilo de las opciones de suscripción */
+.modal-option {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ff5733;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.modal-option.selected {
+    background-color: black;
+    border: 2px solid #ff5733;
+}
+
+.modal-option:hover {
+    background-color: black;
+}
+
+/* Estilo de los botones */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.confirm-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.close-button {
+    background-color: #ff5733;
+    color: white;
+}
+
+/* Estilo del loader */
+.loader {
+    display: none;
+    /* Oculto inicialmente */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.loading-text {
+    color: white;
+    font-size: 14pt;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.dot {
+    margin-left: 3px;
+    animation: blink 1.5s infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.loading-bar-background {
+    --height: 30px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 200px;
+    height: var(--height);
+    background-color: #212121;
+    box-shadow: #0c0c0c -2px 2px 4px 0px inset;
+    border-radius: calc(var(--height) / 2);
+}
+
+.loading-bar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    --height: 20px;
+    width: 0%;
+    height: var(--height);
+    overflow: hidden;
+    background: rgb(222, 74, 15);
+    background: linear-gradient(0deg,
+            rgba(222, 74, 15, 1) 0%,
+            rgba(249, 199, 79, 1) 100%);
+    border-radius: calc(var(--height) / 2);
+    animation: loading 4s ease-out infinite;
+}
+
+.white-bars-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.white-bar {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(-45deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 70%);
+    width: 10px;
+    height: 45px;
+    opacity: 0.3;
+    rotate: 45deg;
+}
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+
+    80% {
+        width: 100%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/*-----------------------------------------------------------------------------*/
+/*Modal style*/
+
+
+/* Estilo del fondo oscuro de la modal */
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilo de la modal */
+.modal {
+    background-color: rgb(30, 29, 29);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del título de la modal */
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ff5733;
+}
+
+/* Estilo de las opciones de suscripción */
+.modal-option {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ff5733;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.modal-option.selected {
+    background-color: black;
+    border: 2px solid #ff5733;
+}
+
+.modal-option:hover {
+    background-color: black;
+}
+
+/* Estilo de los botones */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.confirm-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.close-button {
+    background-color: #ff5733;
+    color: white;
+}
