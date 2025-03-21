@@ -33,6 +33,14 @@
             border-bottom: 2px solid #ff7b58;
         }
 
+        .project-tite {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 24px;
+        }
+
         /* Botón Unlock Pro */
         .button {
             width: fit-content;
@@ -139,8 +147,8 @@
         }
 
         .carousel-track img {
-            width: auto;
-            height: 500px;
+            width: 800px;
+            height: 400px;
             flex-shrink: 0;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -188,17 +196,24 @@
             background-color: #333;
         }
 
-        .contenedor-recomendaciones img {
-            width: auto;
-            height: 300px;
-            object-fit: cover;
+        .contenedor-recomendaciones iframe {
+            width: 300px;
+            /* Ancho fijo para los iframes */
+            height: 200px;
+            /* Alto fijo para los iframes */
+            border: none;
+            /* Elimina el borde predeterminado */
             border-radius: 10px;
+            /* Bordes redondeados */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra */
             transition: transform 0.3s ease;
+            /* Transición para el hover */
         }
 
-        .contenedor-recomendaciones img:hover {
+        .contenedor-recomendaciones iframe:hover {
             transform: scale(1.05);
+            /* Efecto de escala al pasar el mouse */
         }
 
         /*ICON PERFIL*/
@@ -514,7 +529,7 @@
         }
 
         /*---------------------------------------------------------------------------*/
-      /*follow me*/
+        /*follow me*/
         /* From Uiverse.io by ahmed150up */
         .card-f {
             display: flex;
@@ -596,6 +611,7 @@
                 transform: scale(1);
             }
         }
+
         /* Contenedor del carrusel */
         .carousel_ex {
             display: flex;
@@ -968,7 +984,6 @@
             background-color: #ff5733;
             color: white;
         }
-
         /*-------------------------------------------------------*/
         /*este es el css de el estilo de el modal de boton perfil*/
 
@@ -1107,6 +1122,7 @@
     <!-- Menú de hamburguesa -->
     <header>
         <h1 class="project-title">UNIMIX</h1>
+        <h2 class="project-tite">Música</h2>
         <div style="display: flex; align-items: center;">
             <button class="button" title="Acceder a herramientas y contenido exclusivo" onclick="openModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
@@ -1199,7 +1215,6 @@
                     </button>
                 </label>
             </form>
-            <!-- Este es el boton de perfil pero con el modal-->
             <!-- From Uiverse.io by Li-Deheng -->
             <button id="btn-message" class="button-message">
 
@@ -1292,7 +1307,7 @@
     <div class="carousel-container">
         <div class="carousel-track">
             <div class="swiper-slide"><img
-                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvqgn5xnquKgrxMh8_spc1aNS_iB-ukdFDl1hdsSz6VElsPYyGcA4RDkX6gN1N_VXIw8C900Sr1DVrN7ZlmFvwHRLP2XhbBHvsELIm0B4sPxSB__dcBFPkqHC0whN7vpHpOc0Btw/s1600/2012-movie-poster-building.jpg"
+                    src="https://www.allkpop.com/upload/2024/11/content/120259/1731398352-2024-11-12-4.png"
                     alt="Libro 2"></div>
             <div class="swiper-slide"><img
                     src="https://stylelovely.com/wp-content/uploads/netflix_vs_hbo-stranger_things-netflix.jpg"
@@ -1331,262 +1346,117 @@
         </div>
     </div>
 
-    <!-- Sección de libros -->
+    <!-- Sección de iframes -->
     <div class="seccion">
-        <h2>Libros</h2>
+        <h2>Videos Recomendados</h2>
         <div class="contenedor-recomendaciones">
-            <img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1">
-            <img src="https://marketplace.canva.com/EAF55Kx4v24/1/0/1003w/canva-portada-libro-fantas%C3%ADa-ilustrativo-verde-_pp1hAU8znQ.jpg"
-                alt="Libro 2">
-            <img src="https://marketplace.canva.com/EAExaaHVJ3g/1/0/1024w/canva-monocrom%C3%A1tico-suspenso-wattpad-portada-HarfxmNo7mc.jpg"
-                alt="Libro 3">
-            <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4">
-            <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Libro 1">
-            <img src="https://marketplace.canva.com/EADwi4xAG6I/1/0/1024w/canva-monocromo-suspenso-bosque-foto-portada-de-libro-qIvQK6RTXxg.jpg"
-                alt="Libro 2">
-            <img src="https://www.sopitas.com/wp-content/uploads/2015/04/hobbit_port.jpg" alt="Libro 3">
-            <img src="https://marketplace.canva.com/EAFjNCKkDPI/2/0/1003w/canva-portada-de-libro-de-fantas%C3%ADa-dram%C3%A1tico-verde-vrb3LHyOaXg.jpg"
-                alt="Libro 4">
-            <img src="https://marketplace.canva.com/EADxNf-mF58/1/0/1003w/canva-bosque-novela-de-suspenso-portada-de-libro-electr%C3%B3nico-m20kxpu-0aQ.jpg"
-                alt="Libro 1">
-            <img src="https://cordexizdesign.es/wp-content/uploads/2022/05/Portada_predisenada_para_libros_flores_minimalista.jpg"
-                alt="Libro 2">
-            <img src="https://m.media-amazon.com/images/I/61B2qGzm00L._AC_UF1000,1000_QL80_.jpg" alt="Libro 3">
-            <img src="https://m.media-amazon.com/images/I/81BQhafU5jL._UF894,1000_QL80_.jpg" alt="Libro 4">
-            <img src="https://images.cdn2.buscalibre.com/fit-in/360x360/52/d3/52d32a4b4891fe6eaaaafbcac249f71e.jpg"
-                alt="Libro 1">
-            <img src="https://graffica.info/wp-content/uploads/2017/08/Die-verwandlung_Starke.jpg" alt="Libro 2">
-            <img src="https://images.cdn2.buscalibre.com/fit-in/360x360/ac/11/ac1105eafabec008d28448006ff930e0.jpg"
-                alt="Libro 3">
-            <img src="https://www.planetadelibros.com/usuaris/libros/fotos/254/original/portada_el-proceso_franz-kafka_201705300106.jpg"
-                alt="Libro 4">
-
-        </div>
-        <br>
-        <br>
-        <hr>
-        <!---Esto es el carrusel explandible-->
-        <div class="seccion">
-            <h2>Mejores Animes del Momento</h2>
-        </div>
-        <div class="carousel_ex">
-            <div class="carousel-item"
-                style="background-image: url('https://thathashtagshow.com/wp-content/uploads/2023/02/ChainsawMan_16x9.png');">
-                <div class="content">
-                    <h2>Título 1</h2>
-                    <p>Descripción de la imagen 1.</p>
-                </div>
-            </div>
-            <div class="carousel-item"
-                style="background-image: url('https://www.mundodeportivo.com/alfabeta/hero/2021/07/Cual-es-el-orden-para-ver-The-Seven-Deadly-Sins-1.jpg?width=1200&aspect_ratio=16:9');">
-                <div class="content">
-                    <h2>Título 2</h2>
-                    <p>Descripción de la imagen 2.</p>
-                </div>
-            </div>
-            <div class="carousel-item"
-                style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/f3ab185e47b13fa4f121e510927adda0956bee1413dcca8a853c41ec84f17058.jpg');">
-                <div class="content">
-                    <h2>Título 3</h2>
-                    <p>Descripción de la imagen 3.</p>
-                </div>
-            </div>
-            <div class="carousel-item"
-                style="background-image: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/01/1000050845.jpg');">
-                <div class="content">
-                    <h2>Título 4</h2>
-                    <p>Descripción de la imagen 4.</p>
-                </div>
-            </div>
-            <div class="carousel-item"
-                style="background-image: url('https://tintuc-divineshop.cdn.vccloud.vn/wp-content/uploads/2024/09/1-59.jpg');">
-                <div class="content">
-                    <h2>Título 5</h2>
-                    <p>Descripción de la imagen 5.</p>
-                </div>
-            </div>
-            <div class="carousel-item"
-                style="background-image: url('https://staticg.sportskeeda.com/editor/2023/05/d7e3d-16850183241711-1920.jpg?w=640');">
-                <div class="content">
-                    <h2>Título 4</h2>
-                    <p>Descripción de la imagen 4.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sección de animes -->
-    <div class="seccion">
-        <h2>Películas </h2>
-        <div class="contenedor-recomendaciones">
-            <img src="https://i.pinimg.com/originals/3c/37/ed/3c37ed0f3649c627263073d09225d3ee.jpg" alt="Anime 1">
-            <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/21/92/2192f474c6d2789fda49d4bdcb1f4788.jpg"
-                alt="Anime 2">
-            <img src="https://i.pinimg.com/236x/71/66/91/7166917e6541d8c7f4afbb9fd4a6276b.jpg" alt="Anime 3">
-            <img src="https://i.pinimg.com/236x/47/f2/2f/47f22f40160ffb33987fa4b9091dcee0.jpg" alt="Anime 4">
-            <img src="https://es.web.img3.acsta.net/img/e5/dc/e5dc6820bc894028db90f70bb8cd0057.jpg" alt="Anime 1">
-            <img src="https://www.dodmagazine.es/wp-content/uploads/2022/07/pearl-poster-ti-west.jpg" alt="Anime 2">
-            <img src="https://i.3djuegos.com/juegos/17674/uncharted_la_pel__cula/fotos/ficha/uncharted_la_pel__cula-5579132.webp    "
-                alt="Anime 3">
-            <img src="https://marketplace.canva.com/EAEmanlioeY/1/0/1131w/canva-p%C3%B3ster-fusi%C3%B3n-pel%C3%ADcula-monta%C3%B1a-y-mar-foto-LBtNhPCEU2o.jpg"
-                alt="Anime 4">
-            <img src="https://hips.hearstapps.com/hmg-prod/images/poster-peliculas-terror-2019-it-2-1578395576.jpg"
-                alt="Anime 1">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx0xL4M4i-eo8qYOcZV6xwDIx9SSyH-T3oPA&s"
-                alt="Anime 2">
-            <img src="https://www.findelahistoria.com/web/wp-content/uploads/2023/07/Childs-Play-008.jpg" alt="Anime 3">
-            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2016/11/avatar_0.jpg"
-                alt="Anime 4">
-            <img src="https://es.web.img3.acsta.net/img/e5/dc/e5dc6820bc894028db90f70bb8cd0057.jpg" alt="Anime 1">
-            <img src="https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp"
-                alt="Anime 2">
-            <img src="https://www.ecartelera.com/carteles/3000/3074/001_p.jpg" alt="Anime 3">
-            <img src="https://es.web.img3.acsta.net/c_310_420/pictures/22/04/07/11/43/1839314.jpg" alt="Anime 4">
-        </div>
-    </div>
-
-    <!-- Sección de series -->
-    <div class="seccion">
-        <h2>Series </h2>
-        <div class="contenedor-recomendaciones">
-            <img src="https://i.pinimg.com/736x/80/30/6c/80306cf831c6b46efbfdc9bbafe6d43c.jpg" alt="Anime 1">
-            <img src="https://www.planetadelibros.com/usuaris/libros/thumbs/b0ff3426-f6af-4e21-9a44-ba62c2103868/m_175_310/portada_stranger-things-baraja-de-tarot-con-manual_casey-gilly_202309061313.webp"
-                alt="Anime 2">
-            <img src="https://i.pinimg.com/236x/5d/ca/f4/5dcaf42c2962d23b9e29199610ac5cf4.jpg" alt="Anime 3">
-            <img src="https://stylelovely.com/wp-content/uploads/2020/10/series-de-netflix-que-triunfan-Alguien_tiene_que_morir_Miniserie_de_TV.jpg"
-                alt="Anime 4">
-            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2017/02/lucifer-serie-tv-cartel.jpg?tf=1200x"
-                alt="Anime 1">
-            <img src="https://hips.hearstapps.com/hmg-prod/images/juego-de-tronos-primera-temporada-1558599291.jpg?resize=640:*"
-                alt="Anime 2">
-            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2018/10/maldicion-hill-house-portada.jpg?tf=1200x "
-                alt="Anime 3">
-            <img src="https://m.media-amazon.com/images/I/81bI+N5x3jL._AC_UF894,1000_QL80_.jpg">
-            <img src="https://www.formulatv.com/images/series/posters/2600/2653/dest_3.jpg" alt="Anime 1">
-            <img src="https://infosertecla.com/wp-content/uploads/2023/05/230507-1.jpg" alt="Anime 2">
-            <img src="https://www.ecartelera.com/carteles-series/200/271/004_m.jpg" alt="Anime 3">
-            <img src="https://impactolatino.com/wp-content/uploads/2022/01/La-portada-de-la-serie-que-se-lanzo-en-Paramount-Los-Enviados..jpg"
-                alt="Anime 4">
-            <img src="https://es.web.img3.acsta.net/img/e5/dc/e5dc6820bc894028db90f70bb8cd0057.jpg" alt="Anime 1">
-            <img src="https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp"
-                alt="Anime 2">
-            <img src="https://www.ecartelera.com/carteles/3000/3074/001_p.jpg" alt="Anime 3">
-            <img src="https://es.web.img3.acsta.net/c_310_420/pictures/22/04/07/11/43/1839314.jpg" alt="Anime 4">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Y5-rz2SWyx4?si=9dXoxYbLYNwPFnYg"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Y5-rz2SWyx4?si=9dXoxYbLYNwPFnYg"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/E6yPc7z-Kz4?si=nbYWg0bCQCeyzPrW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mEX9ht4bexQ?si=M1eLgHQpEb_y54nS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     <br>
+    <br>
     <hr>
-    <!--otro carrusel-->
+    <!-- Este es otro apartado de los iframe para los vieos de musica-->
     <div class="seccion">
-        <h2>Películas</h2>
-    </div>
-    <div class="carousel_ex">
-        <div class="carousel-item"
-            style="background-image: url('https://cdn.sincroguia.tv/uploads/programs/l/a/-/xla-legion-del-aguila-189488_SPA-27.jpg.pagespeed.ic.IPwvQEIAOX.jpg');">
-            <div class="content">
-                <h2>Título 1</h2>
-                <p>Descripción de la imagen 1.</p>
-            </div>
-        </div>
-        <div class="carousel-item"
-            style="background-image: url('https://www.piramideinvertida.com.ar/wp-content/uploads/2024/06/intensamente-amsiedad-144202-678x381.jpg');">
-            <div class="content">
-                <h2>Título 2</h2>
-                <p>Descripción de la imagen 2.</p>
-            </div>
-        </div>
-        <div class="carousel-item"
-            style="background-image: url('https://s1.1zoom.me/b5050/858/258148-Sepik_3840x2160.jpg');">
-            <div class="content">
-                <h2>Título 3</h2>
-                <p>Descripción de la imagen 3.</p>
-            </div>
-        </div>
-        <div class="carousel-item"
-            style="background-image: url('https://i.ytimg.com/vi/_pZCZ20OLz0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBzrfhAWB4gbVq06f5fCqOwZZV0JQ');">
-            <div class="content">
-                <h2>Título 4</h2>
-                <p>Descripción de la imagen 4.</p>
-            </div>
-        </div>
-        <div class="carousel-item" style="background-image: url('https://www.1zoom.me/big2/802/249559-frederika.jpg');">
-            <div class="content">
-                <h2>Título 5</h2>
-                <p>Descripción de la imagen 5.</p>
-            </div>
-        </div>
-        <div class="carousel-item"
-            style="background-image: url('https://c4.wallpaperflare.com/wallpaper/582/974/466/war-fury-movie-movies-wallpaper-preview.jpg');">
-            <div class="content">
-                <h2>Título 4</h2>
-                <p>Descripción de la imagen 4.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="seccion">
-        <h2>Libros</h2>
+        <h2>Videos Recomendados</h2>
         <div class="contenedor-recomendaciones">
-            <img src="https://images.cdn2.buscalibre.com/fit-in/360x360/52/d3/52d32a4b4891fe6eaaaafbcac249f71e.jpg"
-                alt="Libro 1">
-            <img src="https://graffica.info/wp-content/uploads/2017/08/Die-verwandlung_Starke.jpg" alt="Libro 2">
-            <img src="https://images.cdn2.buscalibre.com/fit-in/360x360/ac/11/ac1105eafabec008d28448006ff930e0.jpg"
-                alt="Libro 3">
-            <img src="https://www.planetadelibros.com/usuaris/libros/fotos/254/original/portada_el-proceso_franz-kafka_201705300106.jpg"
-                alt="Libro 4">
-            <img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg" alt="Libro 1">
-            <img src="https://marketplace.canva.com/EAF55Kx4v24/1/0/1003w/canva-portada-libro-fantas%C3%ADa-ilustrativo-verde-_pp1hAU8znQ.jpg"
-                alt="Libro 2">
-            <img src="https://marketplace.canva.com/EAFjNCKkDPI/2/0/1003w/canva-portada-de-libro-de-fantas%C3%ADa-dram%C3%A1tico-verde-vrb3LHyOaXg.jpg"
-                alt="Libro 4">
-            <img src="https://marketplace.canva.com/EADxNf-mF58/1/0/1003w/canva-bosque-novela-de-suspenso-portada-de-libro-electr%C3%B3nico-m20kxpu-0aQ.jpg"
-                alt="Libro 1">
-            <img src="https://cordexizdesign.es/wp-content/uploads/2022/05/Portada_predisenada_para_libros_flores_minimalista.jpg"
-                alt="Libro 2">
-            <img src="https://marketplace.canva.com/EAExaaHVJ3g/1/0/1024w/canva-monocrom%C3%A1tico-suspenso-wattpad-portada-HarfxmNo7mc.jpg"
-                alt="Libro 3">
-            <img src="https://m.media-amazon.com/images/I/711UrxvoaKL._AC_UF894,1000_QL80_.jpg" alt="Libro 4">
-            <img src="https://m.media-amazon.com/images/I/61B2qGzm00L._AC_UF1000,1000_QL80_.jpg" alt="Libro 3">
-            <img src="https://m.media-amazon.com/images/I/81BQhafU5jL._UF894,1000_QL80_.jpg" alt="Libro 4">
-
-            <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Libro 1">
-            <img src="https://marketplace.canva.com/EADwi4xAG6I/1/0/1024w/canva-monocromo-suspenso-bosque-foto-portada-de-libro-qIvQK6RTXxg.jpg"
-                alt="Libro 2">
-            <img src="https://www.sopitas.com/wp-content/uploads/2015/04/hobbit_port.jpg" alt="Libro 3">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
+    <br>
+    <br>
+    <hr>
 
-    <!-- Sección de animes -->
+    <!-- Sección de iframes -->
     <div class="seccion">
-        <h2>Películas </h2>
+        <h2>Videos Recomendados</h2>
         <div class="contenedor-recomendaciones">
-            <img src="https://i.3djuegos.com/juegos/17674/uncharted_la_pel__cula/fotos/ficha/uncharted_la_pel__cula-5579132.webp    "
-                alt="Anime 3">
-            <img src="https://marketplace.canva.com/EAEmanlioeY/1/0/1131w/canva-p%C3%B3ster-fusi%C3%B3n-pel%C3%ADcula-monta%C3%B1a-y-mar-foto-LBtNhPCEU2o.jpg"
-                alt="Anime 4">
-            <img src="https://hips.hearstapps.com/hmg-prod/images/poster-peliculas-terror-2019-it-2-1578395576.jpg"
-                alt="Anime 1">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx0xL4M4i-eo8qYOcZV6xwDIx9SSyH-T3oPA&s"
-                alt="Anime 2">
-            <img src="https://www.dodmagazine.es/wp-content/uploads/2022/07/pearl-poster-ti-west.jpg" alt="Anime 2">
-            <img src="https://www.findelahistoria.com/web/wp-content/uploads/2023/07/Childs-Play-008.jpg" alt="Anime 3">
-            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2016/11/avatar_0.jpg"
-                alt="Anime 4">
-            <img src="https://es.web.img3.acsta.net/img/e5/dc/e5dc6820bc894028db90f70bb8cd0057.jpg" alt="Anime 1">
-            <img src="https://i.pinimg.com/originals/3c/37/ed/3c37ed0f3649c627263073d09225d3ee.jpg" alt="Anime 1">
-            <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/21/92/2192f474c6d2789fda49d4bdcb1f4788.jpg"
-                alt="Anime 2">
-            <img src="https://i.pinimg.com/236x/71/66/91/7166917e6541d8c7f4afbb9fd4a6276b.jpg" alt="Anime 3">
-            <img src="https://i.pinimg.com/236x/47/f2/2f/47f22f40160ffb33987fa4b9091dcee0.jpg" alt="Anime 4">
-            <img src="https://es.web.img3.acsta.net/img/e5/dc/e5dc6820bc894028db90f70bb8cd0057.jpg" alt="Anime 1">
-
-            <img src="https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp"
-                alt="Anime 2">
-            <img src="https://www.ecartelera.com/carteles/3000/3074/001_p.jpg" alt="Anime 3">
-            <img src="https://es.web.img3.acsta.net/c_310_420/pictures/22/04/07/11/43/1839314.jpg" alt="Anime 4">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
+    <br>
+    <br>
+    <hr>
+    <!-- Este es otro apartado de los iframe para los vieos de musica-->
+    <div class="seccion">
+        <h2>Videos Recomendados</h2>
+        <div class="contenedor-recomendaciones">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+
+    <!-- Sección de iframes -->
+    <div class="seccion">
+        <h2>Videos Recomendados</h2>
+        <div class="contenedor-recomendaciones">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <!-- Este es otro apartado de los iframe para los vieos de musica-->
+    <div class="seccion">
+        <h2>Videos Recomendados</h2>
+        <div class="contenedor-recomendaciones">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+
     <script>
         // Menú de hamburguesa
         const menuIcon = document.getElementById('menuIcon');
@@ -1633,27 +1503,9 @@
                 const walk = (x - startX) * 2;
                 seccion.scrollLeft = scrollLeft - walk;
             });
-
-            // Soporte para dispositivos táctiles
-            seccion.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                startX = e.touches[0].pageX - seccion.offsetLeft;
-                scrollLeft = seccion.scrollLeft;
-            });
-
-            seccion.addEventListener('touchend', () => {
-                isDragging = false;
-            });
-
-            seccion.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - seccion.offsetLeft;
-                const walk = (x - startX) * 2;
-                seccion.scrollLeft = scrollLeft - walk;
-            });
         });
-        //de aqui es el modal de btn_perfil
+
+         //de aqui es el modal de btn_perfil
         // Obtener elementos del DOM
         const btnMessage = document.getElementById('btn-message');
         const modalPerfil = document.getElementById('modal-perfil');

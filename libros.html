@@ -1,24 +1,655 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carrusel Expandible</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
     <style>
-        /* Estilo general */
+        /* Estilos generales */
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(30, 36, 34);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Menú de hamburguesa fijo */
+        header {
+            background-color: #1c1c1c;
+            padding: 5px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4);
+            border-bottom: 2px solid #ff7b58;
+
+        }
+
+        /* Centrar el título "LIBROS" */
+        .project-tite {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /*------------------------------------------------------------------------------------------------*/
+        /* Botón Unlock Pro */
+        .button {
+            width: fit-content;
+            display: flex;
+            padding: 1.2em 1rem;
+            cursor: pointer;
+            gap: 0.4rem;
+            font-weight: bold;
+            border-radius: 30px;
+            text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+            background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+            background-size: 300%;
+            color: #fff;
+            border: none;
+            background-position: left center;
+            box-shadow: 0 30px 10px -20px rgba(0, 0, 0, .2);
+            transition: background .3s ease;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-size: 320%;
+            background-position: right center;
+        }
+
+        .button svg {
+            width: 23px;
+            fill: #f09f33;
+            transition: .3s ease;
+        }
+
+        .button:hover svg {
+            fill: #fff;
+        }
+
+        /*----------------------------------------------------------------------------------------*/
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: fixed;
+            right: 20px;
+            top: 25px;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
             height: 100vh;
+            background-color: rgba(51, 51, 51, 0.95);
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 60px 20px;
+        }
+
+        .menu ul li {
+            margin: 20px 0;
+        }
+
+        .menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .menu ul li a:hover {
+            color: #ff7b58;
+        }
+
+        .menu.active {
+            right: 0;
+        }
+
+        /*--------------------------------------------------------------------------------------------------------*/
+        /* Parallax */
+        .parallax {
+            height: 100vh;
+            background-image: url('https://regresoakasha.com/wp-content/uploads/2025/01/vecteezy_ancient-magic-book-open-mystical-medieval_21594175.-PORTADA.jpg');
+            /* Imagen de fondo */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /*------------------------------------------------------------------------*/
+        /* Carrusel */
+        .carousel-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll 20s linear infinite;
+        }
+
+        .carousel-track img {
+            width: auto;
+            height: 300px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .carousel-track img:hover {
+            transform: translateY(-10px) scale(1.05);
+            /* Efecto de levantar y acercar */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            /* Sombra más pronunciada */
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /*----------------------------------------------------------------------------------------------*/
+        /* Nube de humo */
+        .smoke-effect {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(30, 36, 34, 1), rgba(30, 36, 34, 0));
+            z-index: 1;
+        }
+
+        /*----------------------------------------------------------------------------------------------*/
+
+        /* Secciones de recomendaciones */
+        .seccion {
+            margin: 100px 20px;
+        }
+
+        .seccion h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color:#fff
+        }
+
+        .contenedor-recomendaciones {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 10px;
+            cursor: grab;
+        }
+
+        .contenedor-recomendaciones::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .contenedor-recomendaciones::-webkit-scrollbar-thumb {
+            background-color: #ff7b58;
+            border-radius: 4px;
+        }
+
+        .contenedor-recomendaciones::-webkit-scrollbar-track {
+            background-color: #333;
+        }
+
+        .contenedor-recomendaciones img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .contenedor-recomendaciones img:hover {
+            transform: scale(1.05);
+        }
+
+        /*-------------------------------------------------------------------------------------------------------------*/
+        /* ICON PERFIL */
+        #btn-message {
+            --text-color: rgb(255, 255, 255);
+            --bg-color-sup: #5e5e5e;
+            --bg-color: #2b2b2b;
+            --bg-hover-color: #111010;
+            --online-status: #00da00;
+            --font-size: 16px;
+            --btn-transition: all 0.2s ease-out;
+        }
+
+        .button-message {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #111;
+            font: 400 var(--font-size) Helvetica Neue, sans-serif;
+            box-shadow: 0 0 2.17382px rgba(0, 0, 0, .049), 0 1.75px 6.01034px rgba(0, 0, 0, .07), 0 3.63px 14.4706px rgba(0, 0, 0, .091), 0 22px 48px rgba(0, 0, 0, .14);
+            background-color: var(--bg-color);
+            border-radius: 68px;
+            cursor: pointer;
+            padding: 6px 10px 6px 6px;
+            width: fit-content;
+            height: 40px;
+            border: 0;
             overflow: hidden;
-            margin: 0;
+            position: relative;
+            transition: var(--btn-transition);
+            margin-right: 100px;
+            background-position: left center;
+
         }
 
+        .button-message:hover {
+            height: 56px;
+            padding: 8px 20px 8px 8px;
+            background-color: var(--bg-hover-color);
+            transition: var(--btn-transition);
+        }
+
+        .button-message:active {
+            transform: scale(0.99);
+        }
+
+        .content-avatar {
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            transition: var(--btn-transition);
+            position: relative;
+        }
+
+        .button-message:hover .content-avatar {
+            width: 40px;
+            height: 40px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-color-sup);
+        }
+
+        .user-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .status-user {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            right: 1px;
+            bottom: 1px;
+            border-radius: 50%;
+            outline: solid 2px var(--bg-color);
+            background-color: var(--online-status);
+            transition: var(--btn-transition);
+            animation: active-status 2s ease-in-out infinite;
+        }
+
+        .button-message:hover .status-user {
+            width: 10px;
+            height: 10px;
+            right: 1px;
+            bottom: 1px;
+            outline: solid 3px var(--bg-hover-color);
+        }
+
+        .notice-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-left: 8px;
+            text-align: initial;
+            color: var(--text-color);
+        }
+
+        .username {
+            letter-spacing: -6px;
+            height: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: var(--btn-transition);
+        }
+
+        .user-id {
+            font-size: 12px;
+            letter-spacing: -6px;
+            height: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--btn-transition);
+        }
+
+        .lable-message {
+            display: flex;
+            align-items: center;
+            opacity: 1;
+            transform: scaleY(1);
+            transition: var(--btn-transition);
+        }
+
+        .button-message:hover .username {
+            height: auto;
+            letter-spacing: normal;
+            opacity: 1;
+            transform: translateY(0);
+            transition: var(--btn-transition);
+        }
+
+        .button-message:hover .user-id {
+            height: auto;
+            letter-spacing: normal;
+            opacity: 1;
+            transform: translateY(0);
+            transition: var(--btn-transition);
+        }
+
+        .button-message:hover .lable-message {
+            height: 0;
+            transform: scaleY(0);
+            transition: var(--btn-transition);
+        }
+
+        .lable-message,
+        .username {
+            font-weight: 600;
+        }
+
+        .number-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: 8px;
+            font-size: 12px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--bg-color-sup);
+            border-radius: 20px;
+        }
+
+        @keyframes active-status {
+            0% {
+                background-color: var(--online-status);
+            }
+
+            33.33% {
+                background-color: #93e200;
+            }
+
+            66.33% {
+                background-color: #93e200;
+            }
+
+            100% {
+                background-color: var(--online-status);
+            }
+        }
+
+        /*-------------------------------------------------------------------------------------*/
+        /*Button search*/
+        /* From Uiverse.io by satyamchaudharydev */
+        /* this is a recreation of twitter search in css */
+        .form {
+            --input-text-color: #fff;
+            --input-bg-color: #283542;
+            --focus-input-bg-color: transparent;
+            --text-color: #ff7b58;
+            --active-color: #ff7b58;
+            --width-of-input: 200px;
+            --inline-padding-of-input: 1.2em;
+            --gap: 0.9rem;
+        }
+
+        /* form style */
+        .form {
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            width: var(--width-of-input);
+            position: relative;
+            isolation: isolate;
+            margin-right: 10px;
+
+        }
+
+        /* a fancy bg for showing background and border when focus. */
+        .fancy-bg {
+            position: absolute;
+            width: 100%;
+            inset: 0;
+            background: var(--input-bg-color);
+            border-radius: 40px;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+
+        /* label styling */
+        label {
+            width: 100%;
+            padding: 0.8em;
+            height: 30px;
+            padding-inline: var(--inline-padding-of-input);
+            display: flex;
+            align-items: center;
+        }
+
+        .search,
+        .close-btn {
+            position: absolute;
+        }
+
+        /* styling search-icon */
+        .search {
+            fill: var(--text-color);
+            left: var(--inline-padding-of-input);
+        }
+
+        /* svg -- size */
+        svg {
+            width: 17px;
+            display: block;
+        }
+
+        /* styling of close button */
+        .close-btn {
+            border: none;
+            right: var(--inline-padding-of-input);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 0.1em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--active-color);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* styling of input */
+        .input {
+            color: var(--input-text-color);
+            width: 100%;
+            margin-inline: min(2em, calc(var(--inline-padding-of-input) + var(--gap)));
+            background: none;
+            border: none;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        .input::placeholder {
+            color: var(--text-color)
+        }
+
+        /* input background change in focus */
+        .input:focus~.fancy-bg {
+            border: 1px solid var(--active-color);
+            background: var(--focus-input-bg-color);
+        }
+
+        /* search icon color change in focus */
+        .input:focus~.search {
+            fill: var(--active-color);
+        }
+
+        /* showing close button when typing */
+        .input:valid~.close-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+            -webkit-transition-delay: 9999s;
+        }
+
+        /*follow me*/
+        /* From Uiverse.io by ahmed150up */
+        .card-f {
+            display: flex;
+            height: 70px;
+            width: 270px;
+        }
+
+        .card-f svg {
+            position: absolute;
+            display: flex;
+            width: 60%;
+            height: 100%;
+            font-size: 24px;
+            font-weight: 700;
+            opacity: 1;
+            transition: opacity 0.25s;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .card-f .social-link1,
+        .card-f .social-link2,
+        .card-f .social-link3,
+        .card-f .social-link4 {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            color: whitesmoke;
+            font-size: 24px;
+            text-decoration: none;
+            transition: 0.25s;
+            border-radius: 50px;
+        }
+
+        .card.f svg {
+            transform: scale(1);
+        }
+
+        .card-f .social-link1:hover {
+            background: #f09433;
+            background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+            animation: bounce_613 0.4s linear;
+        }
+
+        .card-f .social-link2:hover {
+            background-color: #00ccff;
+            animation: bounce_613 0.4s linear;
+        }
+
+        .card-f .sal-link3:hover {
+            background-color: #5865f2;
+            animation: bounce_613 0.4s linear;
+        }
+
+        .card-f .social-link4:hover {
+            background-color: #12a50b;
+            animation: bounce_613 0.4s linear;
+        }
+
+        @keyframes bounce_613 {
+            40% {
+                transform: scale(1.4);
+            }
+
+            60% {
+                transform: scale(0.8);
+            }
+
+            80% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+        /*----------------------------------------------------------------------------------------*/
+
         /* Contenedor del carrusel */
-        .carousel {
+        .carousel_ex {
             display: flex;
             gap: 5px;
             width: 90vw;
@@ -36,6 +667,8 @@
             cursor: pointer;
             transition: flex 0.5s ease;
             position: relative;
+            min-width: 50px;
+            max-width: 600px;
         }
 
         /* Expandir al pasar el cursor */
@@ -49,8 +682,9 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            color: white;
-            transition: opacity 0.3s ease;
+            color: #ff7b58;
+            transition: opacity 0.3s ease-in-out;
+            min-height: 80px;
         }
 
         .carousel-item:hover .content {
@@ -66,43 +700,1045 @@
         p {
             margin: 5px 0 0;
             font-size: 16px;
+            color: #fff;
+        }
+
+        hr {
+            border: none;
+            /* Elimina el borde predeterminado */
+            height: 2px;
+            /* Grosor */
+            background-color: #ff5733;
+            /* Color */
+        }
+        /* From Uiverse.io by vinodjangid07 */
+        .Btn {
+            width: 130px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(15, 15, 15);
+            border: none;
+            color: white;
+            font-weight: 600;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(255, 253, 253, 0.103);
+            position: relative;
+            overflow: hidden;
+            transition-duration: .3s;
+        }
+
+        .svgIcon {
+            width: 16px;
+        }
+
+        .svgIcon path {
+            fill: white;
+        }
+
+        .Btn::before {
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            content: "";
+            background-color: white;
+            border-radius: 50%;
+            left: -100%;
+            top: 0;
+            transition-duration: .3s;
+            mix-blend-mode: difference;
+        }
+
+        .Btn:hover::before {
+            transition-duration: .3s;
+            transform: translate(100%, -50%);
+            border-radius: 0;
+        }
+
+        .Btn:active {
+            transform: translate(5px, 5px);
+            transition-duration: .3s;
+        }
+
+        /*---------------------------------------------------------------------*/
+
+        /* Estilo del fondo oscuro de la modal */
+        .modal-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Estilo de la modal */
+        .modal {
+            background-color: rgb(30, 29, 29);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo del título de la modal */
+        .modal h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff5733;
+        }
+
+        /* Estilo de las opciones de suscripción */
+        .modal-option {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff5733;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .modal-option.selected {
+            background-color: black;
+            border: 2px solid #ff5733;
+        }
+
+        .modal-option:hover {
+            background-color: black;
+        }
+
+        /* Estilo de los botones */
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .close-button {
+            background-color: #ff5733;
+            color: white;
+        }
+
+        /* Estilo del loader */
+        .loader {
+            display: none;
+            /* Oculto inicialmente */
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 14pt;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .dot {
+            margin-left: 3px;
+            animation: blink 1.5s infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .loading-bar-background {
+            --height: 30px;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 5px;
+            width: 200px;
+            height: var(--height);
+            background-color: #212121;
+            box-shadow: #0c0c0c -2px 2px 4px 0px inset;
+            border-radius: calc(var(--height) / 2);
+        }
+
+        .loading-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            --height: 20px;
+            width: 0%;
+            height: var(--height);
+            overflow: hidden;
+            background: rgb(222, 74, 15);
+            background: linear-gradient(0deg,
+                    rgba(222, 74, 15, 1) 0%,
+                    rgba(249, 199, 79, 1) 100%);
+            border-radius: calc(var(--height) / 2);
+            animation: loading 4s ease-out infinite;
+        }
+
+        .white-bars-container {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .white-bar {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(-45deg,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, 0) 70%);
+            width: 10px;
+            height: 45px;
+            opacity: 0.3;
+            rotate: 45deg;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0;
+            }
+
+            80% {
+                width: 100%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /*-----------------------------------------------------------------------------*/
+        /*Modal style*/
+
+
+        /* Estilo del fondo oscuro de la modal */
+        .modal-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Estilo de la modal */
+        .modal {
+            background-color: rgb(30, 29, 29);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo del título de la modal */
+        .modal h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff5733;
+        }
+
+        /* Estilo de las opciones de suscripción */
+        .modal-option {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff5733;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .modal-option.selected {
+            background-color: black;
+            border: 2px solid #ff5733;
+        }
+
+        .modal-option:hover {
+            background-color: black;
+        }
+
+        /* Estilo de los botones */
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .close-button {
+            background-color: #ff5733;
+            color: white;
+        }
+        /*-------------------------------------------------------*/
+        /*este es el css de el estilo de el modal de boton perfil*/
+
+        /* Estilos para el modal */
+        .modal-perfil {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: #FF6844;
+        }
+
+        /* Estilos para la tarjeta */
+        .card {
+            width: 350px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+            background-color: #fffffe;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            width: 350px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            border-bottom: 3px solid #fefefe;
+            background: linear-gradient(40deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .card * {
+            z-index: 1;
+        }
+
+        .image {
+            width: 90px;
+            height: 90px;
+            background-color: #1468BF;
+            border-radius: 50%;
+            border: 4px solid #fefefe;
+            margin-top: 30px;
+            transition: all 0.5s ease;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.5s ease;
+        }
+
+        .card-info span {
+            font-weight: 600;
+            font-size: 24px;
+            color: #161A42;
+            margin-top: 15px;
+            line-height: 5px;
+        }
+
+        .card-info p {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .button-perfil {
+            text-decoration: none;
+            background-color: #1468BF;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 5px;
+            border: 1px solid white;
+            transition: all 0.5s ease;
+        }
+
+        .card:hover::before {
+            width: 350px;
+            height: 300px;
+            border-bottom: none;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            transform: scale(0.95);
+        }
+
+        .card:hover .card-info {
+            transform: translate(0%, -25%);
+        }
+
+        .card:hover .image {
+            transform: scale(2) translate(-60%, -40%);
+        }
+
+        .button:hover {
+            background-color: #FF6844;
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body>
 
-    <div class="carousel">
-        <div class="carousel-item" style="background-image: url('https://wallpapercave.com/wp/wp8573800.jpg');">
-            <div class="content">
-                <h2>Título 1</h2>
-                <p>Descripción de la imagen 1.</p>
+<body>
+    <!-- Menú de hamburguesa -->
+    <header>
+        <h1 class="project-title">UNIMIX</h1>
+        <h2 class="project-tite">LIBROS</h2>
+        <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center;">
+                <button class="button" title="Acceder a herramientas y contenido exclusivo" onclick="openModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                        <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                    </svg>
+                    Unlock Pro
+                </button>
+                <!-- Modal de suscripción -->
+                <div id="modal-background" class="modal-background">
+                    <div class="modal">
+                        <h2>Elige tus categorías</h2>
+                        <div class="modal-option" onclick="selectOption(this)">Películas</div>
+                        <div class="modal-option" onclick="selectOption(this)">Series</div>
+                        <div class="modal-option" onclick="selectOption(this)">Anime</div>
+                        <div class="modal-option" onclick="selectOption(this)">Libros</div>
+                        <div class="modal-option" onclick="selectOption(this)">Música</div>
+                        <div class="modal-buttons">
+                            <button class="close-button" onclick="closeModal()">Salir</button>
+                            <button class="Btn" onclick="confirmSelection()">
+                                Pay
+                                <svg class="svgIcon" viewBox="0 0 576 512">
+                                    <path
+                                        d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Animación de carga -->
+                <div id="loader" class="loader modal-background">
+                    <div class="loading-text">
+                        Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+                    </div>
+                    <div class="loading-bar-background">
+                        <div class="loading-bar">
+                            <div class="white-bars-container">
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Modal de pago (oculta inicialmente) -->
+                <div id="payment-modal" class="modal-background">
+                    <div class="modal">
+                        <h2>Método de Pago</h2>
+                        <div class="modal-option" onclick="selectPaymentMethod(this)">Tarjeta de Crédito</div>
+                        <div class="modal-option" onclick="selectPaymentMethod(this)">PayPal</div>
+                        <div class="modal-option" onclick="selectPaymentMethod(this)">Criptomonedas</div>
+                        <div class="modal-buttons">
+                            <button class="close-button" onclick="closePaymentModal()">Cancelar</button>
+                            <button class="confirm-button" onclick="finalizePayment()">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            <!-- From Uiverse.io by satyamchaudharydev -->
+            <form class="form">
+                <label for="search">
+                    <input class="input" type="text" required="" placeholder="Buscar Libros" id="search">
+                    <div class="fancy-bg"></div>
+                    <div class="search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"
+                            class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                            <g>
+                                <path
+                                    d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                    <button class="close-btn" type="reset">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </label>
+            </form>
+            <!-- From Uiverse.io by Li-Deheng -->
+            <button id="btn-message" class="button-message">
+
+                <div class="content-avatar">
+                    <div class="status-user"></div>
+                    <div class="avatar">
+                        <svg class="user-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12,12.5c-3.04,0-5.5,1.73-5.5,3.5s2.46,3.5,5.5,3.5,5.5-1.73,5.5-3.5-2.46-3.5-5.5-3.5Zm0-.5c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3,1.34,3,3,3Z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notice-content">
+                    <div class="username">Alan Almaraz</div>
+                    <div class="lable-message">Perfil<span class="number-message">3</span></div>
+                    <div class="user-id">@ete e mi correo</div>
+                </div>
+            </button>
+
+            <div id="modal-perfil" class="modal-perfil">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="card">
+                        <div class="image"></div>
+                        <div class="card-info">
+                            <span>Alan Almaraz</span>
+                            <p>@ete e mi correo</p>
+                        </div>
+                        <a href="#" class="button-perfil">Configurar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-icon" id="menuIcon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="menu" id="menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <hr>
+                    <li><a href="libros.html">Libros</a></li>
+                    <li><a href="anime.html">Anime</a></li>
+                    <li><a href="musica.html">Música</a></li>
+                    <li><a href="#">Acerca de</a></li>
+                    <hr>
+                    <li><a href="https://gam.onl/psx/doom.html#game">Ir a jugar DOOM</a></li>
+                    <li><a href="#">Contactanos</a></li>
+                    <hr>
+                </ul>
+                <!-- From Uiverse.io by ahmed150up -->
+                <div class="card-f">
+                    <a class="social-link1">
+                        <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="social-link2">
+                        <svg viewBox="0 0 16 16" class="bi bi-twitter" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                            </path>
+                        </svg> </a>
+                    <a class="social-link3">
+                        <svg viewBox="0 0 16 16" class="bi bi-discord" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="social-link4">
+                        <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
+                            xmlns="http://www.w3.org/2000/svg" style="color: white">
+                            <path fill="white"
+                                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Parallax con carrusel -->
+    <div class="parallax">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <img
+                 src="https://i.pinimg.com/474x/a0/7f/dd/a07fdd1c73c145377d9741fd7d0b99f6.jpg">
+                <img
+                    src="https://i.pinimg.com/474x/2c/d6/03/2cd60333665bc09ea9e51aecc3b12c8a.jpg">
+                <img src="https://i.pinimg.com/474x/ca/e2/1d/cae21d49cb9a0733a01d679bb9a4f171.jpg">
+                <img src="https://i.pinimg.com/474x/a1/21/a1/a121a13aa014d4c4b44ddc1e286119f3.jpg">
+                <img src="https://i.pinimg.com/474x/1b/83/b7/1b83b7fd9aba1bc0a5087968dbe4ce70.jpg">
+                <img src="https://i.pinimg.com/236x/5b/55/88/5b5588929b6f46d55f62e775c3e8d101.jpg">
+
             </div>
         </div>
-        <div class="carousel-item" style="background-image: url('https://img.asmedia.epimg.net/resizer/v2/ZZQZCGD2GBIEDFIFMIDLIPP45Q.jpg?auth=ea1a7efe6acbcce82a37b57386b3eaa6dfdfd229166ecf2e10e28ebc5da432ad&width=360');">
-            <div class="content">
-                <h2>Título 2</h2>
-                <p>Descripción de la imagen 2.</p>
-            </div>
-        </div>
-        <div class="carousel-item" style="background-image: url('https://es.web.img3.acsta.net/newsv7/22/09/29/10/27/3610249.jpg');">
-            <div class="content">
-                <h2>Título 3</h2>
-                <p>Descripción de la imagen 3.</p>
-            </div>
-        </div>
-        <div class="carousel-item" style="background-image: url('https://cdn.superaficionados.com/imagenes/51-animes-de-accion-one-punch-man-cke.jpg');">
-            <div class="content">
-                <h2>Título 4</h2>
-                <p>Descripción de la imagen 4.</p>
-            </div>
-        </div>
-        <div class="carousel-item" style="background-image: url('https://media.es.wired.com/photos/6713e003d4042b1e4ceb89f9/master/w_1600%2Cc_limit/dandadan-anime-2.jpg');">
-            <div class="content">
-                <h2>Título 5</h2>
-                <p>Descripción de la imagen 5.</p>
-            </div>
+        <div class="smoke-effect"></div> <!--Entra nube de humo -->
+    </div>
+
+    <!-- Sección mixta -->
+    <div class="seccion">
+        <h2>Un poco de todo</h2>
+        <div class="contenedor-recomendaciones">
+            <img src="https://marketplace.canva.com/EAF55Kx4v24/1/0/1003w/canva-portada-libro-fantas%C3%ADa-ilustrativo-verde-_pp1hAU8znQ.jpg"
+                alt="Mixto 1">
+            <img
+                src="https://i.pinimg.com/474x/1b/14/61/1b14610a265935b00c1c6f208cdaf3c4.jpg">
+            <img src="https://i.pinimg.com/474x/c1/69/5d/c1695db50caf89a92b5645b4e8bdb2c2.jpg">
+            <img src="https://i.pinimg.com/474x/7b/10/02/7b1002b87648de278b606271afe6b2dc.jpg"
+                alt="Mixto 4">
+            <img
+                src="https://i.pinimg.com/474x/b0/12/de/b012deda3ea90522676f97ce21a2570a.jpg">
+            <img src="https://i.pinimg.com/474x/8b/87/00/8b870041513f83e9cfc9290d5b3e502e.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/f4/74/ab/f474ab584ffd465ba81d04f26d901f99.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/c1/69/5d/c1695db50caf89a92b5645b4e8bdb2c2.jpg"
+                alt="">
+            <img src="https://i.pinimg.com/474x/ab/5b/b2/ab5bb2e396cc0b2a7d82da9c79499d60.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/bd/0e/8b/bd0e8b52374d2ead16d19a38246dea78.jpg"
+                alt="">
+            <img src="https://i.pinimg.com/474x/b0/12/de/b012deda3ea90522676f97ce21a2570a.jpg" alt="">
         </div>
     </div>
 
+    <div class="seccion">
+        <h2>Fantasía </h2>
+        <div class="contenedor-recomendaciones">
+            <img src="https://i.pinimg.com/474x/ee/23/df/ee23df3a67f6f27ab8645debc9f6d5e3.jpg"
+                alt="Mixto 1">
+            <img
+                src="https://i.pinimg.com/474x/66/69/9f/66699fca1937b3256c4bfda1211c9d28.jpg">
+            <img src="https://i.pinimg.com/474x/50/c5/a3/50c5a3f3061b88378725742b82fd9629.jpg">
+            <img src="https://i.pinimg.com/474x/aa/d2/bf/aad2bf7e7178097ad0e722c6a0955041.jpg"
+                alt="Mixto 4">
+            <img
+                src="https://i.pinimg.com/474x/ef/f6/69/eff66978a8e21808fadb590b53e76619.jpg">
+            <img src="https://i.pinimg.com/474x/1b/83/b7/1b83b7fd9aba1bc0a5087968dbe4ce70.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/76/e5/43/76e543500a7625623002c13ad3545421.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/49/70/a9/4970a9e0c19e63d2a99273d6b91dbffe.jpg"
+                alt="">
+            <img src="https://i.pinimg.com/474x/82/b4/76/82b476695239bddf4a101bb4a4f3e32c.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/fd/40/9d/fd409d75404840ea9422871d3784f6f0.jpg"
+                alt="">
+            <img src="https://i.pinimg.com/736x/d0/53/26/d053264accaf3c4dfc788e03d1ff4528.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="seccion">
+        <h2>Romance</h2>
+        <div class="contenedor-recomendaciones">
+            <img src="https://i.pinimg.com/474x/f9/c5/c4/f9c5c4e98e0811b2bd65ffaedae0de27.jpg"
+            alt="Mixto 1">
+        <img
+            src="https://i.pinimg.com/474x/3c/b8/f4/3cb8f448f8c11128d90f33c422e707bf.jpg">
+        <img src="https://i.pinimg.com/474x/bc/d4/11/bcd4115141f55c3b275ef5b856b5a19e.jpg">
+        <img src="https://i.pinimg.com/474x/92/64/a4/9264a4efe574d462d6dccc9f7ae8951e.jpg"
+            alt="Mixto 4">
+        <img
+            src="https://i.pinimg.com/474x/8f/57/c7/8f57c71dac06331151cd36c3c87b598d.jpg">
+        <img src="https://i.pinimg.com/474x/4e/d5/57/4ed5577a9c00550c3a061e8ef999644e.jpg" alt="">
+        <img src="https://i.pinimg.com/474x/5b/df/3c/5bdf3c6e946a4ef9cc412b03f3a0f4fd.jpg" alt="">
+        <img src="https://i.pinimg.com/474x/6a/d9/b7/6ad9b722ab9f59ccfb3a2463789b2bc7.jpg"
+            alt="">
+        <img src="https://i.pinimg.com/474x/ab/13/85/ab1385cd02b5e3125cb79103fbe66e7c.jpg" alt="">
+        <img src="https://i.pinimg.com/474x/d9/dd/9f/d9dd9f6594788f310d30d7692c4e96bd.jpg"
+            alt="">
+        <img src="https://i.pinimg.com/736x/8f/dd/8e/8fdd8ef027cf2ad75d849d3c99f6084e.jpg" alt="">
+        </div>
+        <br>
+        <br>
+
+        <hr>
+        <!---Esto es el carrusel explandible-->
+        <div class="seccion">
+            <h2>Adaptados a películas</h2>
+        </div>
+        <div class="carousel_ex">
+            <div class="carousel-item"
+                style="background-image: url('https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/3DB636AA760DA4A9E93CBC58310494644BCE7F1C719F84BC7D2A81B47B167C9E/scale?width=506&aspectRatio=2.00&format=webp');">
+                <div class="content">
+                    <h2>La ladrona de libros</h2>
+                    <p>Durante la Segunda Guerra Mundial, Liesel, una niña adoptada en la </p><p>Alemania nazi, encuentra consuelo en los libros que roba y</p> comparte con otros, mientras la Muerte narra su historia.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://i.blogs.es/5bcfb9/silence2/650_1200.jpg');">
+                <div class="content">
+                    <h2>El silencio de los inocentes</h2>
+                    <p>Descripción de la imagen 3.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://i.pinimg.com/736x/ab/65/e3/ab65e3ffdc70925aacf7233e1f9abe2e.jpg');">
+                <div class="content">
+                    <h2>El Codigo Da Vinci</h2>
+                    <p>Descripción de la imagen 2.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item"
+                style="background-image: url('https://cdn.forbes.com.mx/2023/06/Dune-2-1.webp');">
+                <div class="content">
+                    <h2>Duna</h2>
+                    <p>Descripción de la imagen 4.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://media.glamour.mx/photos/67463043910f77a4145859b0/16:9/w_2560%2Cc_limit/wicked-final-explicado.jpg');">
+                <div class="content">
+                    <h2>Wicked</h2>
+                    <p>Descripción de la imagen 5.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://stateless-fueradefoco.storage.googleapis.com/wp-content/uploads/2018/02/30190052/THE-DEATH-CURE-OPT.jpg');">
+                <div class="content">
+                    <h2>Maze Runner: La cura mortal</h2>
+                    <p>Descripción de la imagen 4.</p>
+                </div>
+            </div>
+        </div>
+        <div class="seccion">
+            <h2>Thriller</h2>
+            <div class="contenedor-recomendaciones">
+                <img src="https://i.pinimg.com/474x/30/c6/31/30c63134e8a02ae13464709135212400.jpg"
+                alt="Mixto 1">
+            <img
+                src="https://i.pinimg.com/474x/8e/aa/f5/8eaaf5d9423fab597a2b4c9f963d600c.jpg">
+            <img src="https://i.pinimg.com/474x/48/75/5a/48755ae251b247debe6219a0179d084b.jpg">
+            <img src="https://i.pinimg.com/474x/93/64/e6/9364e666c1b0629c418a41c098e12c94.jpg"
+                alt="Mixto 4">
+            <img
+                src="https://i.pinimg.com/474x/0a/5d/e7/0a5de7c511181a67dcda8e92aa6758ab.jpg">
+            <img src="https://i.pinimg.com/474x/a5/5c/6c/a55c6cf7686c30788d3967bc2272cfb1.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/52/c8/bd/52c8bd48d9167ec64a23681d0b4d1700.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/ad/b8/b1/adb8b1e3941088d4eb033b407041521f.jpg"
+                alt="">
+            <img src="https://i.pinimg.com/474x/8f/4b/65/8f4b658be80a8ccbfde7becbfaa05134.jpg" alt="">
+            <img src="https://i.pinimg.com/474x/9f/27/8f/9f278f7bf66e2a9a47ec517b7b92666e.jpg"
+                alt="">
+            <img src="https://i.pinimg.com/474x/15/e0/ba/15e0ba474275f8ab0ebcfea2e019eda9.jpg" alt="">
+            </div>
+            <!-------------------------------------------------------------------------------------------------------------------->
+            <div class="seccion">
+                <h2>Ficción</h2>
+                <div class="contenedor-recomendaciones">
+                    <img src="https://i.pinimg.com/474x/6a/08/4a/6a084af093bbbe5a9743764183e01819.jpg"
+                    alt="Mixto 1">
+                <img
+                    src="https://i.pinimg.com/474x/cf/92/6c/cf926c5d1cb537ad052b21a2c956647e.jpg">
+                <img src="https://i.pinimg.com/474x/2c/d6/03/2cd60333665bc09ea9e51aecc3b12c8a.jpg">
+                <img src="https://i.pinimg.com/474x/03/62/17/0362178268775d8921fed1af7c93e62f.jpg"
+                    alt="Mixto 4">
+                <img
+                    src="https://i.pinimg.com/474x/ba/ac/2e/baac2e4819f9787a27b1404ac178fd5b.jpg">
+                <img src="https://i.pinimg.com/474x/70/a0/e6/70a0e6c7d165ba07f2693e504978e3e1.jpg" alt="">
+                <img src="https://i.pinimg.com/474x/87/e9/82/87e9821321decd618213916f3ed78a61.jpg" alt="">
+                <img src="https://i.pinimg.com/474x/0d/f1/e1/0df1e1364554e76363879c86665fcd06.jpg"
+                    alt="">
+                <img src="https://i.pinimg.com/474x/95/3d/77/953d77d0dd44ab8763ab5f9d46c87bb7.jpg" alt="">
+                <img src="https://i.pinimg.com/474x/31/ad/5a/31ad5a46903ec0dd977f8eff19afa03c.jpg"
+                    alt="">
+                <img src="https://i.pinimg.com/474x/4e/38/aa/4e38aa817f4892191caaee48f38bf40f.jpg" alt="">
+                </div>
+                <!-------------------------------------------------------------------------------------------------------------------->
+                <hr>
+                <br>
+                <div class="seccion">
+                    <h2>Adaptados a series</h2>
+                </div>
+                <div class="carousel_ex">
+                    <div class="carousel-item"
+                        style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/d08212ae7fce4d58fc5628118e9787bc390749a3d16c3e22c389a4a4403a387f.jpg');">
+                        <div class="content">
+                            <h2>Los 100</h2>
+                            <p>En un futuro postapocalíptico, 100 jóvenes delincuentes son enviados a la Tierra para comprobar si es habitable. 
+                                Pronto descubren que no están solos y deben luchar por sobrevivir en un mundo lleno de peligros.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://akamai.sscdn.co/uploadfile/letras/playlists/e/a/4/7/ea47a7241f46448eb01f6a32bdc3037b.jpg');">
+                        <div class="content">
+                            <h2>Gambito de dama</h2>
+                            <p>Beth Harmon, una prodigio del ajedrez, desafía las normas en un mundo dominado por hombres mientras enfrenta su propia lucha contra la adicción y el trauma del pasado.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://www.loslunesseriefilos.com/wp-content/uploads/2020/05/critica-unorthodox-poco-ortodoxa-netflix.jpg');">
+                        <div class="content">
+                            <h2>Poco Ortodoxa</h2>
+                            <p>Esther Shapiro escapa de su comunidad judía ultraortodoxa en Nueva York y viaja a Berlín en busca de libertad, mientras su pasado intenta alcanzarla.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/d7dbf184ff601ee1c1f2789c0150d306b22d8e686592b39ce23f06340be2e793.jpg');">
+                        <div class="content">
+                            <h2>Los anillos de poder</h2>
+                            <p>Ambientada miles de años antes de "El Señor de los Anillos", la serie muestra la creación de los Anillos de Poder, el ascenso de Sauron y la lucha de los pueblos libres contra la oscuridad.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://esports.as.com/2017/04/17/bonus/trece-razones_1018108183_207233_1440x810.jpg');">
+                        <div class="content">
+                            <h2>Por 13 razones</h2>
+                            <p>Clay Jensen recibe unas cintas grabadas por su compañera Hannah Baker antes de su suicidio, revelando las razones y secretos que la llevaron a tomar esa decisión.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://occ-0-8407-1007.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABQwBMVeKmCngU9NOZawulfvhVbF6fEuPfXGqwWYha5ZrMDbHsIQYLO3yHwBzjd2__3Y1B1BcJKCuVMlf2tuOjFRrgCTuAnRa3O4w.jpg?r=68b');">
+                        <div class="content">
+                            <h2>YOU</h2>
+                            <p>Un librero obsesivo utiliza la manipulación y la violencia para acercarse a la mujer que ama, convirtiendo el romance en una peligrosa obsesión.</p>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <script>
+        // Menú de hamburguesa
+        const menuIcon = document.getElementById('menuIcon');
+        const menu = document.getElementById('menu');
+
+        menuIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (menu.classList.contains('active') && !menu.contains(e.target) && !menuIcon.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Funcionalidad de arrastre para las secciones
+        const secciones = document.querySelectorAll('.contenedor-recomendaciones');
+        secciones.forEach(seccion => {
+            let isDragging = false;
+            let startX, scrollLeft;
+
+            seccion.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - seccion.offsetLeft;
+                scrollLeft = seccion.scrollLeft;
+                seccion.style.cursor = 'grabbing';
+            });
+
+            seccion.addEventListener('mouseleave', () => {
+                isDragging = false;
+                seccion.style.cursor = 'grab';
+            });
+
+            seccion.addEventListener('mouseup', () => {
+                isDragging = false;
+                seccion.style.cursor = 'grab';
+            });
+
+            seccion.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - seccion.offsetLeft;
+                const walk = (x - startX) * 2;
+                seccion.scrollLeft = scrollLeft - walk;
+            });
+
+            // Soporte para dispositivos táctiles
+            seccion.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX - seccion.offsetLeft;
+                scrollLeft = seccion.scrollLeft;
+            });
+
+            seccion.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            seccion.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - seccion.offsetLeft;
+                const walk = (x - startX) * 2;
+                seccion.scrollLeft = scrollLeft - walk;
+            });
+        });
+ //de aqui es el modal de btn_perfil
+        // Obtener elementos del DOM
+        const btnMessage = document.getElementById('btn-message');
+        const modalPerfil = document.getElementById('modal-perfil');
+        const closeBtn = document.querySelector('.close');
+
+        // Mostrar el modal al hacer clic en el botón
+        btnMessage.addEventListener('click', () => {
+            modalPerfil.style.display = 'flex';
+        });
+
+        // Ocultar el modal al hacer clic en el botón de cierre
+        closeBtn.addEventListener('click', () => {
+            modalPerfil.style.display = 'none';
+        });
+
+        // Ocultar el modal al hacer clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            if (event.target === modalPerfil) {
+                modalPerfil.style.display = 'none';
+            }
+        });
+
+        // Redirección al hacer clic en el nombre "UNIMIX"
+        const projectTitle = document.querySelector('.project-title');
+        projectTitle.addEventListener('click', () => {
+            window.location.href = 'index.html'; // Redirige a index.html
+        });
+        //Script del modal
+        // Variables para almacenar las selecciones
+        let selectedOptions = [];
+        let selectedPaymentMethod = null;
+
+        // Función para abrir la modal de categorías
+        function openModal() {
+            const modalBackground = document.getElementById('modal-background');
+            modalBackground.style.display = 'flex';
+        }
+
+        // Función para cerrar la modal de categorías
+        function closeModal() {
+            const modalBackground = document.getElementById('modal-background');
+            modalBackground.style.display = 'none';
+        }
+
+        // Función para seleccionar una opción
+        function selectOption(option) {
+            option.classList.toggle('selected');
+            if (option.classList.contains('selected')) {
+                selectedOptions.push(option.textContent);
+            } else {
+                selectedOptions = selectedOptions.filter(item => item !== option.textContent);
+            }
+        }
+
+        // Función para confirmar la selección y mostrar la animación de carga
+        function confirmSelection() {
+            if (selectedOptions.length === 0) {
+                alert('Por favor, selecciona al menos una categoría.');
+                return;
+            }
+            closeModal();
+            const loader = document.getElementById('loader');
+            loader.style.display = 'flex';
+
+            // Esperar 5 segundos antes de mostrar la modal de pago
+            setTimeout(() => {
+                loader.style.display = 'none';
+                const paymentModal = document.getElementById('payment-modal');
+                paymentModal.style.display = 'flex';
+            }, 5000); // 5000 ms = 5 segundos
+        }
+
+        // Función para seleccionar un método de pago
+        function selectPaymentMethod(method) {
+            if (selectedPaymentMethod) {
+                selectedPaymentMethod.classList.remove('selected');
+            }
+            method.classList.add('selected');
+            selectedPaymentMethod = method.textContent;
+        }
+
+        // Función para cerrar la modal de pago
+        function closePaymentModal() {
+            const paymentModal = document.getElementById('payment-modal');
+            paymentModal.style.display = 'none';
+        }
+
+        // Función para finalizar el pago
+        function finalizePayment() {
+            if (!selectedPaymentMethod) {
+                alert('Por favor, selecciona un método de pago.');
+                return;
+            }
+            alert(`Has seleccionado: ${selectedOptions.join(', ')}\nMétodo de pago: ${selectedPaymentMethod}`);
+            closePaymentModal();
+        }
+    </script>
 </body>
-</html>

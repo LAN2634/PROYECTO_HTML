@@ -64,11 +64,28 @@ secciones.forEach(seccion => {
     });
 });
 
-// Redirección al hacer clic en el botón de perfil
-const btnMessage = document.getElementById('btn-message');
-btnMessage.addEventListener('click', () => {
-    window.location.href = 'perfil.html'; // Redirige a perfil.html
-});
+ //de aqui es el modal de btn_perfil
+        // Obtener elementos del DOM
+        const btnMessage = document.getElementById('btn-message');
+        const modalPerfil = document.getElementById('modal-perfil');
+        const closeBtn = document.querySelector('.close');
+
+        // Mostrar el modal al hacer clic en el botón
+        btnMessage.addEventListener('click', () => {
+            modalPerfil.style.display = 'flex';
+        });
+
+        // Ocultar el modal al hacer clic en el botón de cierre
+        closeBtn.addEventListener('click', () => {
+            modalPerfil.style.display = 'none';
+        });
+
+        // Ocultar el modal al hacer clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            if (event.target === modalPerfil) {
+                modalPerfil.style.display = 'none';
+            }
+        });
 
 // Redirección al hacer clic en el nombre "UNIMIX"
 const projectTitle = document.querySelector('.project-title');
