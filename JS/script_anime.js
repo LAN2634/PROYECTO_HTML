@@ -1,4 +1,6 @@
-// Menú de hamburguesa
+window.onload = function () {
+    document.querySelector(".loader-i").classList.add("hidden");
+};
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
 

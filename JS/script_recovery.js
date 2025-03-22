@@ -1,4 +1,7 @@
-// Manejar el envío del formulario de recuperación
+window.onload = function () {
+    document.querySelector(".loader").classList.add("hidden");
+};
+
 document.getElementById('recoveryForm').addEventListener('submit', (e) => {
     e.preventDefault(); // Evitar el envío predeterminado
     const email = document.getElementById('email').value; // Obtener valor del correo

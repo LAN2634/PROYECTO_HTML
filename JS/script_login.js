@@ -1,12 +1,13 @@
- // Manejar el envío del formulario de login
- document.getElementById('loginForm').addEventListener('submit', (e) => {
+
+window.onload = function () {
+    document.querySelector(".loader").classList.add("hidden");
+};
+document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault();
     alert('Inicio de sesión exitoso');
-    window.location.href = 'index.html'; 
+    window.location.href = 'index.html';
 });
-
-// Redirigir al registro
 document.getElementById('registroLink').addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = 'registro.html'; 
+    window.location.href = 'registro.html';
 });
