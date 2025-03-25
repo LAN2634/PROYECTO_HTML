@@ -564,14 +564,15 @@
             -webkit-transition-delay: 9999s;
         }
 
+        /*follow me*/
         /* From Uiverse.io by ahmed150up */
-        .card {
+        .card-f {
             display: flex;
             height: 70px;
             width: 270px;
         }
 
-        .card svg {
+        .card-f svg {
             position: absolute;
             display: flex;
             width: 60%;
@@ -584,10 +585,10 @@
             cursor: pointer;
         }
 
-        .card .social-link1,
-        .card .social-link2,
-        .card .social-link3,
-        .card .social-link4 {
+        .card-f .social-link1,
+        .card-f .social-link2,
+        .card-f .social-link3,
+        .card-f .social-link4 {
             position: relative;
             display: flex;
             align-items: center;
@@ -600,11 +601,11 @@
             border-radius: 50px;
         }
 
-        .card svg {
+        .card.f svg {
             transform: scale(1);
         }
 
-        .card .social-link1:hover {
+        .card-f .social-link1:hover {
             background: #f09433;
             background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -613,17 +614,17 @@
             animation: bounce_613 0.4s linear;
         }
 
-        .card .social-link2:hover {
+        .card-f .social-link2:hover {
             background-color: #00ccff;
             animation: bounce_613 0.4s linear;
         }
 
-        .card .social-link3:hover {
+        .card-f .sal-link3:hover {
             background-color: #5865f2;
             animation: bounce_613 0.4s linear;
         }
 
-        .card .social-link4:hover {
+        .card-f .social-link4:hover {
             background-color: #12a50b;
             animation: bounce_613 0.4s linear;
         }
@@ -708,7 +709,7 @@
             /* Elimina el borde predeterminado */
             height: 2px;
             /* Grosor */
-            background-color: #fff;
+            background-color: #ff5733;
             /* Color */
         }
     </style>
@@ -718,18 +719,18 @@
     <!-- Menú de hamburguesa -->
     <header>
         <h1 class="project-title">UNIMIX</h1>
-        <h2 class="project-tite">Películas</h2>
+        <h2 class="project-tite">PELÍCULAS</h2>
         <div style="display: flex; align-items: center;">
             <button class="button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                     <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
                 </svg>
-                Unlock Pro
+                Premium
             </button>
             <!-- From Uiverse.io by satyamchaudharydev -->
             <form class="form">
                 <label for="search">
-                    <input class="input" type="text" required="" placeholder="Buscar Libros" id="search">
+                    <input class="input" type="text" required="" placeholder="Buscar Películas" id="search">
                     <div class="fancy-bg"></div>
                     <div class="search">
                         <svg viewBox="0 0 24 24" aria-hidden="true"
@@ -779,16 +780,16 @@
                     <hr>
                     <li><a href="libros.html">Libros</a></li>
                     <li><a href="anime.html">Anime</a></li>
+                    <li><a href="musica.html">Música</a></li>
                     <li><a href="peliculas.html">Películas</a></li>
-                    <li class="li"></li>
-                    <li class="li"></li>
-                    <li class="li"></li>
                     <li><a href="#">Acerca de</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <hr>
+                    <li><a href="https://gam.onl/psx/doom.html#game">Ir a jugar DOOM</a></li>
+                    <li><a href="#">Contáctanos</a></li>
                     <hr>
                 </ul>
                 <!-- From Uiverse.io by ahmed150up -->
-                <div class="card">
+                <div class="card-f">
                     <a class="social-link1">
                         <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" height="16" width="16"
                             xmlns="http://www.w3.org/2000/svg" style="color: white">
