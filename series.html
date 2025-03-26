@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Películas</title>
+    <title>Series</title>
     <style>
         /* Estilos generales */
         body {
@@ -137,7 +137,7 @@
         /* Parallax */
         .parallax {
             height: 100vh;
-            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240724/pngtree-vintage-film-projector-casting-flickering-images-image_16097875.jpg');
+            background-image: url('https://wallpapercave.com/uwp/uwp3550993.jpeg');
             /* Imagen de fondo */
             background-attachment: fixed;
             background-position: center;
@@ -713,6 +713,493 @@
             /* Color */
         }
 
+        /* From Uiverse.io by vinodjangid07 */
+        .Btn {
+            width: 130px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(15, 15, 15);
+            border: none;
+            color: white;
+            font-weight: 600;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(255, 253, 253, 0.103);
+            position: relative;
+            overflow: hidden;
+            transition-duration: .3s;
+        }
+
+        .svgIcon {
+            width: 16px;
+        }
+
+        .svgIcon path {
+            fill: white;
+        }
+
+        .Btn::before {
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            content: "";
+            background-color: white;
+            border-radius: 50%;
+            left: -100%;
+            top: 0;
+            transition-duration: .3s;
+            mix-blend-mode: difference;
+        }
+
+        .Btn:hover::before {
+            transition-duration: .3s;
+            transform: translate(100%, -50%);
+            border-radius: 0;
+        }
+
+        .Btn:active {
+            transform: translate(5px, 5px);
+            transition-duration: .3s;
+        }
+
+        /*---------------------------------------------------------------------*/
+
+        /* Estilo del fondo oscuro de la modal */
+        .modal-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Estilo de la modal */
+        .modal {
+            background-color: rgb(30, 29, 29);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo del título de la modal */
+        .modal h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff5733;
+        }
+
+        /* Estilo de las opciones de suscripción */
+        .modal-option {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff5733;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .modal-option.selected {
+            background-color: black;
+            border: 2px solid #ff5733;
+        }
+
+        .modal-option:hover {
+            background-color: black;
+        }
+
+        /* Estilo de los botones */
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .close-button {
+            background-color: #ff5733;
+            color: white;
+        }
+
+        /* Estilo del loader */
+        .loader {
+            display: none;
+            /* Oculto inicialmente */
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 14pt;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .dot {
+            margin-left: 3px;
+            animation: blink 1.5s infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .loading-bar-background {
+            --height: 30px;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 5px;
+            width: 200px;
+            height: var(--height);
+            background-color: #212121;
+            box-shadow: #0c0c0c -2px 2px 4px 0px inset;
+            border-radius: calc(var(--height) / 2);
+        }
+
+        .loading-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            --height: 20px;
+            width: 0%;
+            height: var(--height);
+            overflow: hidden;
+            background: rgb(222, 74, 15);
+            background: linear-gradient(0deg,
+                    rgba(222, 74, 15, 1) 0%,
+                    rgba(249, 199, 79, 1) 100%);
+            border-radius: calc(var(--height) / 2);
+            animation: loading 4s ease-out infinite;
+        }
+
+        .white-bars-container {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .white-bar {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(-45deg,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, 0) 70%);
+            width: 10px;
+            height: 45px;
+            opacity: 0.3;
+            rotate: 45deg;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0;
+            }
+
+            80% {
+                width: 100%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /*-----------------------------------------------------------------------------*/
+        /*Modal style*/
+
+
+        /* Estilo del fondo oscuro de la modal */
+        .modal-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Estilo de la modal */
+        .modal {
+            background-color: rgb(30, 29, 29);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo del título de la modal */
+        .modal h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff5733;
+        }
+
+        /* Estilo de las opciones de suscripción */
+        .modal-option {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff5733;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .modal-option.selected {
+            background-color: black;
+            border: 2px solid #ff5733;
+        }
+
+        .modal-option:hover {
+            background-color: black;
+        }
+
+        /* Estilo de los botones */
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .close-button {
+            background-color: #ff5733;
+            color: white;
+        }
+
+        /*-------------------------------------------------------*/
+        /*este es el css de el estilo de el modal de boton perfil*/
+
+        /* Estilos para el modal */
+        .modal-perfil {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: #FF6844;
+        }
+
+        /* Estilos para la tarjeta */
+        .card {
+            width: 350px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+            background-color: #fffffe;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            width: 350px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            border-bottom: 3px solid #fefefe;
+            background: linear-gradient(40deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .card * {
+            z-index: 1;
+        }
+
+        .image {
+            width: 90px;
+            height: 90px;
+            background-color: #1468BF;
+            border-radius: 50%;
+            border: 4px solid #fefefe;
+            margin-top: 30px;
+            transition: all 0.5s ease;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.5s ease;
+        }
+
+        .card-info span {
+            font-weight: 600;
+            font-size: 24px;
+            color: #161A42;
+            margin-top: 15px;
+            line-height: 5px;
+        }
+
+        .card-info p {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .button-perfil {
+            text-decoration: none;
+            background-color: #1468BF;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 5px;
+            border: 1px solid white;
+            transition: all 0.5s ease;
+        }
+
+        .card:hover::before {
+            width: 350px;
+            height: 300px;
+            border-bottom: none;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            transform: scale(0.95);
+        }
+
+        .card:hover .card-info {
+            transform: translate(0%, -25%);
+        }
+
+        .card:hover .image {
+            transform: scale(2) translate(-60%, -40%);
+        }
+
+        .button:hover {
+            background-color: #FF6844;
+            transform: scale(1.1);
+        }
+
+        /* =======================
+* LOADER 
+======================== */
+        .loader-i {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #fff;
+            border-top-color: #ff5733;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Ocultar loader cuando la página cargue */
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
         /* =======================
 * LOADER 
 ======================== */
@@ -998,179 +1485,253 @@
             <span class="actual-text">&nbsp;UNIMIX&nbsp;</span>
             <span aria-hidden="true" class="hover-text">&nbsp;UNIMIX&nbsp;</span>
         </button>
-        <h2 class="project-tite">PELÍCULAS</h2>
+        <h2 class="project-tite">Series</h2>
         <div style="display: flex; align-items: center;">
-            <button class="button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
-                    <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
-                </svg>
-                Premium
-            </button>
-            <!-- From Uiverse.io by satyamchaudharydev -->
-            <form class="form">
-                <label for="search">
-                    <input class="input" type="text" required="" placeholder="Buscar Películas" id="search">
-                    <div class="fancy-bg"></div>
-                    <div class="search">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"
-                            class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
-                            <g>
+            <div style="display: flex; align-items: center;">
+                <button class="button" title="Acceder a herramientas y contenido exclusivo" onclick="openModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                        <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                    </svg>
+                    Premium
+                </button>
+                <!-- Modal de suscripción -->
+                <div id="modal-background" class="modal-background">
+                    <div class="modal">
+                        <h2>Elige tus categorías</h2>
+                        <div class="modal-option" onclick="selectOption(this)">Películas</div>
+                        <div class="modal-option" onclick="selectOption(this)">Series</div>
+                        <div class="modal-option" onclick="selectOption(this)">Anime</div>
+                        <div class="modal-option" onclick="selectOption(this)">Libros</div>
+                        <div class="modal-option" onclick="selectOption(this)">Música</div>
+                        <div class="modal-buttons">
+                            <button class="close-button" onclick="closeModal()">Salir</button>
+                            <button class="Btn" onclick="confirmSelection()">
+                                Pay
+                                <svg class="svgIcon" viewBox="0 0 576 512">
+                                    <path
+                                        d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animación de carga -->
+                <div id="loader" class="loader modal-background">
+                    <div class="loading-text">
+                        Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+                    </div>
+                    <div class="loading-bar-background">
+                        <div class="loading-bar">
+                            <div class="white-bars-container">
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de pago (oculta inicialmente) -->
+                <div id="payment-modal" class="modal-background">
+                    <div class="modal">
+                        <h2>Método de Pago</h2>
+                        <div class="modal-option" onclick="selectPaymentMethod(this)">Tarjeta de Crédito</div>
+                        <div class="modal-option" onclick="selectPaymentMethod(this)">PayPal</div>
+                        <div class="modal-option" onclick="selectPaymentMethod(this)">Criptomonedas</div>
+                        <div class="modal-buttons">
+                            <button class="close-button" onclick="closePaymentModal()">Cancelar</button>
+                            <button class="confirm-button" onclick="finalizePayment()">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- From Uiverse.io by satyamchaudharydev -->
+                <form class="form">
+                    <label for="search">
+                        <input class="input" type="text" required="" placeholder="Buscar Series" id="search">
+                        <div class="fancy-bg"></div>
+                        <div class="search">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"
+                                class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                                <g>
+                                    <path
+                                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <button class="close-btn" type="reset">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </label>
+                </form>
+                <!-- From Uiverse.io by Li-Deheng -->
+                <button id="btn-message" class="button-message">
+
+                    <div class="content-avatar">
+                        <div class="status-user"></div>
+                        <div class="avatar">
+                            <svg class="user-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
-                                    d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                    d="M12,12.5c-3.04,0-5.5,1.73-5.5,3.5s2.46,3.5,5.5,3.5,5.5-1.73,5.5-3.5-2.46-3.5-5.5-3.5Zm0-.5c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3,1.34,3,3,3Z">
                                 </path>
-                            </g>
-                        </svg>
+                            </svg>
+                        </div>
                     </div>
-                    <button class="close-btn" type="reset">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </label>
-            </form>
-            <!-- From Uiverse.io by Li-Deheng -->
-            <button id="btn-message" class="button-message">
-                <div class="content-avatar">
-                    <div class="status-user"></div>
-                    <div class="avatar">
-                        <svg class="user-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M12,12.5c-3.04,0-5.5,1.73-5.5,3.5s2.46,3.5,5.5,3.5,5.5-1.73,5.5-3.5-2.46-3.5-5.5-3.5Zm0-.5c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3,1.34,3,3,3Z">
-                            </path>
-                        </svg>
+                    <div class="notice-content">
+                        <div class="username">Alan Almaraz</div>
+                        <div class="lable-message">Perfil<span class="number-message">3</span></div>
+                        <div class="user-id">@ete e mi correo</div>
+                    </div>
+                </button>
+
+                <div id="modal-perfil" class="modal-perfil">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="card">
+                            <div class="image"></div>
+                            <div class="card-info">
+                                <span>Alan Almaraz</span>
+                                <p>@ete e mi correo</p>
+                            </div>
+                            <a href="#" class="button-perfil">Configurar</a>
+                        </div>
                     </div>
                 </div>
-                <div class="notice-content">
-                    <div class="username">Alan Almaraz</div>
-                    <div class="lable-message">Perfil<span class="number-message">3</span></div>
-                    <div class="user-id">@ete e mi correo</div>
+                <div class="menu-icon" id="menuIcon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-            </button>
-            <div class="menu-icon" id="menuIcon">
-                <span></span>
-                <span></span>
-                <span></span>
+                <nav class="menu" id="menu">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <hr>
+                        <li><a href="libros.html">Libros</a></li>
+                        <li><a href="anime.html">Anime</a></li>
+                        <li><a href="musica.html">Música</a></li>
+                        <li><a href="series.html">Series</a></li>
+                        <li><a href="peliculas.html">Películas</a></li>
+                        <li><a href="#">Acerca de</a></li>
+                        <hr>
+                        <li><a href="https://gam.onl/psx/doom.html#game">Ir a jugar DOOM</a></li>
+                        <li><a href="#">Contáctanos</a></li>
+                        <hr>
+                    </ul>
+                    <!-- From Uiverse.io by ahmed150up -->
+                    <div class="card-f">
+                        <a class="social-link1">
+                            <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" height="16" width="16"
+                                xmlns="http://www.w3.org/2000/svg" style="color: white">
+                                <path fill="white"
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="social-link2">
+                            <svg viewBox="0 0 16 16" class="bi bi-twitter" fill="currentColor" height="16" width="16"
+                                xmlns="http://www.w3.org/2000/svg" style="color: white">
+                                <path fill="white"
+                                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                                </path>
+                            </svg> </a>
+                        <a class="social-link3">
+                            <svg viewBox="0 0 16 16" class="bi bi-discord" fill="currentColor" height="16" width="16"
+                                xmlns="http://www.w3.org/2000/svg" style="color: white">
+                                <path fill="white"
+                                    d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="social-link4">
+                            <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
+                                xmlns="http://www.w3.org/2000/svg" style="color: white">
+                                <path fill="white"
+                                    d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </nav>
             </div>
-            <nav class="menu" id="menu">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <hr>
-                    <li><a href="libros.html">Libros</a></li>
-                    <li><a href="anime.html">Anime</a></li>
-                    <li><a href="musica.html">Música</a></li>
-                    <li><a href="series.html">Series</a></li>
-                    <li><a href="peliculas.html">Películas</a></li>
-                    <li><a href="#">Acerca de</a></li>
-                    <hr>
-                    <li><a href="https://gam.onl/psx/doom.html#game">Ir a jugar DOOM</a></li>
-                    <li><a href="#">Contáctanos</a></li>
-                    <hr>
-                </ul>
-                <!-- From Uiverse.io by ahmed150up -->
-                <div class="card-f">
-                    <a class="social-link1">
-                        <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a class="social-link2">
-                        <svg viewBox="0 0 16 16" class="bi bi-twitter" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
-                            </path>
-                        </svg> </a>
-                    <a class="social-link3">
-                        <svg viewBox="0 0 16 16" class="bi bi-discord" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a class="social-link4">
-                        <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </nav>
-        </div>
     </header>
 
-    <!-- Parallax con carrusel -->
     <div class="parallax">
         <div class="carousel-container">
             <div class="carousel-track">
-                <img src="https://i.pinimg.com/474x/a9/7d/26/a97d26449214bb756c75b4ed88d7b06e.jpg">
-                <img src="https://i.pinimg.com/474x/91/e8/b2/91e8b28b4cb04f5bd07d7fcd3bf08e16.jpg">
-                <img src="https://i.pinimg.com/474x/11/28/f4/1128f459e34e4b2c7984834b9941f3af.jpg">
-                <img src="https://i.pinimg.com/474x/6b/4c/76/6b4c76c0ecc2557e9d015475b20799f7.jpg">
-                <img src="https://i.pinimg.com/474x/bc/2d/93/bc2d93ec6bcdc919a6d3ca2480728171.jpg">
-                <img src="https://i.pinimg.com/474x/85/8e/b8/858eb8b11420441e14ee961ac226a7f1.jpg">
+                <img src="https://i.pinimg.com/736x/b4/1d/28/b41d28e461faee5b19eb336c78374a74.jpg">
+                <img src="https://i.pinimg.com/736x/5d/10/71/5d107165e8c0966c7754be50a813b90e.jpg">
+                <img src="https://i.pinimg.com/736x/5a/9d/2e/5a9d2e897d587941d610a05e6af4ba0f.jpg">
+                <img src="https://i.pinimg.com/736x/31/40/31/314031b6ab67ec1603d370167490caa1.jpg">
+                <img src="https://i.pinimg.com/736x/92/c5/9e/92c59ea4104eebb8b8528b504775db45.jpg">
+                <img src="https://i.pinimg.com/736x/91/17/75/9117751636528b25a7b4687cab63572d.jpg">
 
             </div>
         </div>
         <div class="smoke-effect"></div> <!--Entra nube de humo -->
     </div>
-
     <!-- Sección mixta -->
     <div class="seccion">
-        <h2>Un poco de todo</h2>
+        <h2>SUSPENSO</h2>
         <div class="contenedor-recomendaciones">
-            <img src="https://i.pinimg.com/736x/18/d7/4e/18d74ef46e722828f75cca91b009f4a5.jpg" alt="Mixto 1">
-            <img src="https://i.pinimg.com/474x/85/8e/b8/858eb8b11420441e14ee961ac226a7f1.jpg">
-            <img src="https://i.pinimg.com/474x/6b/4c/76/6b4c76c0ecc2557e9d015475b20799f7.jpg">
-            <img src="https://i.pinimg.com/474x/74/f6/87/74f687c316ea2304bc42611f818495f2.jpg" alt="Mixto 4">
-            <img src="https://i.pinimg.com/474x/11/28/f4/1128f459e34e4b2c7984834b9941f3af.jpg">
-            <img src="https://i.pinimg.com/474x/bc/2d/93/bc2d93ec6bcdc919a6d3ca2480728171.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/5e/63/31/5e6331bce13df5f304a9a89caa5a5b7a.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/49/3e/2c/493e2c1109f2e72f745eb7880d75e7fe.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/13/69/d2/1369d2e63dfa2f08b5bd7ef5d75bb861.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/99/6c/46/996c46af1d36a0f8ae08abcb5279389b.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/ae/be/de/aebedea565116005359ffa4b29344622.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/6a/c0/cd/6ac0cdf2a9af24d3aa800dd8744b0a69.jpg" alt="Mixto 1">
+            <img src="https://i.pinimg.com/736x/de/ab/24/deab2416998776e5fb591b1bf564698d.jpg">
+            <img src="https://i.pinimg.com/736x/89/5b/fd/895bfdcf453cc32af50ae1847cf4fa4d.jpg">
+            <img src="https://i.pinimg.com/736x/e8/2f/82/e82f828f60f7d210d7c8574595c771e9.jpg" alt="Mixto 4">
+            <img src="https://i.pinimg.com/736x/02/0d/c8/020dc884b3ce29014359d96cf268eb1a.jpg">
+            <img src="https://i.pinimg.com/736x/68/38/c8/6838c875648f2ac1ef4c8f9db5c5c2a3.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/f1/a5/ac/f1a5ac4a22d1c5c1f7db2a39df9ecb15.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/49/1a/04/491a0475866b6d84b705cdee534f036f.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/85/cc/d0/85ccd06d559f04bc1925c66329a8a58f.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/9c/63/b2/9c63b2a3caeb6de4849f5345193c277e.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/08/04/00/08040035b0ad4d094e92d91f2b3e75fd.jpg" alt="">
         </div>
     </div>
 
     <div class="seccion">
-        <h2>Comedia </h2>
+        <h2>TERROR</h2>
         <div class="contenedor-recomendaciones">
-            <img src="https://i.pinimg.com/474x/bd/a2/01/bda2016b4180b0b0d59eb20ba33ca639.jpg" alt="Mixto 1">
-            <img src="https://i.pinimg.com/474x/32/40/e9/3240e953f6d35233668736cd8bb19ab8.jpg">
-            <img src="https://i.pinimg.com/474x/70/2e/1d/702e1d048197ed34673bd8ec599e7f70.jpg">
-            <img src="https://i.pinimg.com/474x/c3/0f/99/c30f99c98ac5bbbb39770981781660db.jpg" alt="Mixto 4">
-            <img src="https://i.pinimg.com/474x/fa/b1/02/fab1024984e946455dd4edb49aa06cfc.jpg">
-            <img src="https://i.pinimg.com/474x/4d/56/19/4d5619d46fde30d04f7f456f1f9dc87d.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/3a/60/26/3a6026d3e455c6bcf58c76ac4a2ace89.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/30/b9/7f/30b97f07d5266abfad6d18a5c5e03917.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/9a/0d/f4/9a0df46b51f98debea9d1ef3fa88f0be.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/b3/c3/12/b3c312013a52ca50f061b6382b553f37.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/e8/75/78/e8757854f12700189bc83c8635138b26.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/5e/84/86/5e848675bc2ef02ea1f54cd6347b23a2.jpg" alt="Mixto 1">
+            <img src="https://i.pinimg.com/736x/87/84/ac/8784ac408debac6c4550d17ed33d989a.jpg">
+            <img src="https://i.pinimg.com/736x/33/27/cd/3327cd760f8506e801d02579e9ff8962.jpg">
+            <img src="https://i.pinimg.com/736x/8e/32/db/8e32dbc19789cae35cbd8189a4062ad2.jpg" alt="Mixto 4">
+            <img src="https://i.pinimg.com/736x/6e/16/3b/6e163ba190c8f22ca9a52e088de22ee2.jpg">
+            <img src="https://i.pinimg.com/736x/69/24/d4/6924d4d4a7fab170daeda8a36eab5030.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/f5/ac/04/f5ac04df8f9a5d3386a4e1138ca5f314.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/63/e8/98/63e89898c698ac3e2eef36f0061ff092.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/ff/14/72/ff1472bad4b65325f9312401ec9bcaba.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/29/95/e3/2995e3c8b8c2e485305f2208bde97ab3.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/83/fb/02/83fb02cdd3efe673e0ec177efce896f3.jpg" alt="">
         </div>
     </div>
 
     <div class="seccion">
-        <h2>Infantiles</h2>
+        <h2>COMEDIA</h2>
         <div class="contenedor-recomendaciones">
-            <img src="https://i.pinimg.com/474x/83/f3/7d/83f37d979b63ae4aa16216a7c277497e.jpg" alt="Mixto 1">
-            <img src="https://i.pinimg.com/474x/d2/41/28/d24128672107d23e0fa55929bcfad74b.jpg">
-            <img src="https://i.pinimg.com/474x/63/96/32/6396321519a480faddd831215fd9979f.jpg">
-            <img src="https://i.pinimg.com/474x/72/72/7e/72727e9e728723492b43f7f0c07f1829.jpg" alt="Mixto 4">
-            <img src="https://i.pinimg.com/474x/a1/e5/5b/a1e55bec3cadaddda2aba9bc64962fec.jpg">
-            <img src="https://i.pinimg.com/474x/92/8e/f3/928ef3e4298719e809399d7e1b82ed3d.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/a9/4d/46/a94d46b636f50a811d482694df9ea848.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/21/a4/1f/21a41fbd960851008b5eb55a71ee04a5.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/69/83/93/6983931e46a7ef5605a17f519c4a8786.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/93/fc/92/93fc92c8a8b11a0640beac21d390e921.jpg" alt="">
-            <img src="https://i.pinimg.com/474x/3a/a4/41/3aa44119d248596543cf3d18e32b4dd6.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/d9/62/96/d962961d5597c1175471abd017576349.jpg" alt="Mixto 1">
+            <img src="https://i.pinimg.com/736x/f7/19/0b/f7190befa7394f29a16ea540abc36172.jpg">
+            <img src="https://i.pinimg.com/736x/6b/72/95/6b7295c51554d3c7ffd0aa1049447c01.jpg">
+            <img src="https://i.pinimg.com/736x/46/23/f3/4623f364872c45ca48cd609561a480c6.jpg" alt="Mixto 4">
+            <img src="https://i.pinimg.com/736x/60/fb/01/60fb01e740aae587ba2144b3e6521e1c.jpg">
+            <img src="https://i.pinimg.com/736x/10/e1/09/10e1097fd5852d112c1aac386ac88887.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/95/f2/2f/95f22f25843b7bedf9155b72720021f5.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/81/74/dc/8174dcbd61c3b889e2364ca60895a33c.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/f6/75/47/f67547f7a4801a1b4e5e5f4222e09884.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/b8/95/15/b8951577fe2225ec059d74d604da5c24.jpg" alt="">
+            <img src="https://i.pinimg.com/736x/07/77/fd/0777fd4c3d081301fd885aba59eb40fd.jpg" alt="">
         </div>
         <br>
         <br>
@@ -1178,131 +1739,144 @@
         <hr>
         <!---Esto es el carrusel explandible-->
         <div class="seccion">
-            <h2>Estrenos</h2>
+            <h2>INFANTILES</h2>
         </div>
         <div class="carousel_ex">
             <div class="carousel-item"
-                style="background-image: url('https://i.pinimg.com/736x/7a/88/02/7a88026027057c428bfe2c4cdbb7090a.jpg');">
+                style="background-image: url('https://i.pinimg.com/736x/4b/f8/43/4bf843363c26141b4014112813d15847.jpg');">
                 <div class="content">
-                    <h2>Flow</h2>
-                    <p>Un gato enfrenta una inundación.</p>
+                    <h2>31 Minutos</h2>
+                    <p>31 minutos es una serie de televisión y película chilena que trata sobre un noticiero de títeres
+                        que intenta cubrir la actualidad.</p>
                 </div>
             </div>
             <div class="carousel-item"
-                style="background-image: url('https://i.pinimg.com/474x/c4/11/e0/c411e09eda78256b10a1345a45c2b5fa.jpg');">
+                style="background-image: url('https://i.pinimg.com/736x/3d/64/a3/3d64a34682509f59c2e7337dcc4dbe1a.jpg');">
                 <div class="content">
-                    <h2>Mufasa</h2>
-                    <p>La juventud de Mufasa.</p>
+                    <h2>Las chicas Superpoderosas</h2>
+                    <p>Las Chicas Superpoderosas es una serie animada sobre tres niñas con superpoderes que salvan el
+                        mundo de monstruos y villanos. </p>
                 </div>
             </div>
             <div class="carousel-item"
-                style="background-image: url('https://www.minecraft.net/content/dam/minecraftnet/franchise/photography/things/MNCRFT_MICROSOFT_Thumbnail_TSR_864x505_1R1.jpg');">
+                style="background-image: url('https://i.pinimg.com/736x/ff/27/55/ff27559276a40f030cdebc34b081a32c.jpg');">
                 <div class="content">
-                    <h2>Minecraft</h2>
-                    <p>Un grupo lucha para salvar el mundo de Minecraft.</p>
-                </div>
-            </div>
-
-            <div class="carousel-item"
-                style="background-image: url('https://musicart.xboxlive.com/7/d2f36d00-0000-0000-0000-000000000002/504/image.jpg');">
-                <div class="content">
-                    <h2>Memorias de un caracol</h2>
-                    <p>Una joven enfrenta la pérdida.</p>
+                    <h2>Bob esponja</h2>
+                    <p>La trama de Bob Esponja trata de un personaje ficticio que vive en Fondo de Bikini, una ciudad
+                        submarina, y que trabaja como cocinero en el restaurante El Crustáceo Cascarudo.</p>
                 </div>
             </div>
             <div class="carousel-item"
-                style="background-image: url('https://media.glamour.mx/photos/67463043910f77a4145859b0/16:9/w_2560%2Cc_limit/wicked-final-explicado.jpg');">
+                style="background-image: url('https://i.pinimg.com/736x/a4/7e/20/a47e203282139e11ac8c3be3a60f7bee.jpg');">
                 <div class="content">
-                    <h2>Wicked</h2>
-                    <p>La historia de las brujas de Oz.</p>
+                    <h2>Jóvenes Titanes</h2>
+                    <p>Jóvenes Titanes es una serie animada sobre un grupo de superhéroes adolescentes que protegen a
+                        Jump City de villanos. </p>
                 </div>
             </div>
             <div class="carousel-item"
-                style="background-image: url('https://vcdn1-giaitri.vnecdn.net/2025/02/21/anthony-mackie-captain-america-9741-2664-1740119857.png?w=0&h=0&q=100&dpr=2&fit=crop&s=2nLiKet8-GaK-vAA38b_Yw');">
+                style="background-image: url('https://i.pinimg.com/736x/e8/dc/2b/e8dc2bdbcc4600612db281456bc4c982.jpg');">
                 <div class="content">
-                    <h2>Capitán América: Un mundo nuevo</h2>
-                    <p>Sam Wilson como Capitán América.</p>
+                    <h2>Hora de aventura</h2>
+                    <p> Finn y su mejor amigo y hermano Jake, un perro mágico. Viven en la Tierra de Ooo, un entorno
+                        lleno de personajes surrealistas y animales que hablan, donde la magia y la alta tecnología se
+                        unen para crear extraños y nuevos artefactos.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('https://i.pinimg.com/736x/3d/d2/ae/3dd2aeed54d78d9bd11c36c80698fe98.jpg');">
+                <div class="content">
+                    <h2>Gravity Falls</h2>
+                    <p>Cuenta la historia de los gemelos Dipper y Mabel Pines. Los niños pasan el verano con su tío
+                        abuelo Stan en Gravity Falls, Oregón, y descubren misterios sobrenaturales. </p>
                 </div>
             </div>
         </div>
         <div class="seccion">
-            <h2>Romance</h2>
+            <h2>ROMÁNTICAS</h2>
             <div class="contenedor-recomendaciones">
-                <img src="https://i.pinimg.com/474x/98/af/34/98af3487ca3b4fa43adbe12b1957c222.jpg" alt="Mixto 1">
-                <img src="https://i.pinimg.com/474x/dc/5a/cd/dc5acd3ff8e96465fdfa0c9992537ca7.jpg">
-                <img src="https://i.pinimg.com/474x/f7/e1/43/f7e14384a3bd08191322ae67da6fccf0.jpg">
-                <img src="https://i.pinimg.com/474x/2f/25/11/2f2511f4d7bb3c9b32fc55fac850e026.jpg" alt="Mixto 4">
-                <img src="https://i.pinimg.com/474x/22/57/f6/2257f60e84967cfa6fa9427fdc0cef46.jpg">
-                <img src="https://i.pinimg.com/474x/ce/f2/f2/cef2f2c90f0295332f3ac9f9857831e8.jpg" alt="">
-                <img src="https://i.pinimg.com/474x/a4/cb/e3/a4cbe35bcf2d4e33bab40bd97fccae5c.jpg" alt="">
-                <img src="https://i.pinimg.com/474x/c0/94/77/c09477ebbf283ccf85546b34d27e7029.jpg" alt="">
-                <img src="https://i.pinimg.com/474x/95/7f/a6/957fa69a66b645af756e52c8f95d3b69.jpg" alt="">
-                <img src="https://i.pinimg.com/474x/23/ce/f2/23cef236d74d0d79c081c6aef7b573ce.jpg" alt="">
-                <img src="https://i.pinimg.com/474x/a5/db/1c/a5db1c46a01a5e26115ed1690d95bbd4.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/23/1d/65/231d65ba9b6a013b04e74990f8343286.jpg" alt="Mixto 1">
+                <img src="https://i.pinimg.com/736x/5d/10/71/5d107165e8c0966c7754be50a813b90e.jpg">
+                <img src="https://i.pinimg.com/736x/2f/5d/25/2f5d251ecdaf7e3e477eaaf40367550b.jpg">
+                <img src="https://i.pinimg.com/736x/28/f8/bb/28f8bbb22d2df2d9d0295f3f6a1d83a6.jpg" alt="Mixto 4">
+                <img src="https://i.pinimg.com/736x/9c/78/38/9c7838e45b94b62b58d6c9b99a6e931c.jpg">
+                <img src="https://i.pinimg.com/736x/b9/b3/78/b9b3787ca12138304e8362aa0b3a8ba3.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/df/f1/ac/dff1ac7512ccb444e2523e4fca242a11.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/32/50/c2/3250c256c67e975de3df8b8cc443d17b.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/28/47/9c/28479c861f8739fa9ce86a6a078aad3c.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/6a/ed/1c/6aed1ccbe8c6edb6dabede84ed6bd2a1.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/6d/67/37/6d673702f6687b6fe95dd3e63b1c8229.jpg" alt="">
             </div>
             <!-------------------------------------------------------------------------------------------------------------------->
             <div class="seccion">
-                <h2>Ficción</h2>
+                <h2>K-DRAMAS</h2>
                 <div class="contenedor-recomendaciones">
-                    <img src="https://i.pinimg.com/474x/f8/73/45/f8734504bb454af068961c72fec3555f.jpg" alt="Mixto 1">
-                    <img src="https://i.pinimg.com/474x/a2/f7/6a/a2f76a49cfef48b038d6d6b74413de03.jpg">
-                    <img src="https://i.pinimg.com/474x/f4/30/30/f43030ef60e38668b165ad7f00525fbc.jpg">
-                    <img src="https://i.pinimg.com/474x/69/e8/41/69e84138efbc09a199883d5ff274b777.jpg" alt="Mixto 4">
-                    <img src="https://i.pinimg.com/474x/02/1e/c3/021ec3ddb2788952bbd6919911c0918c.jpg">
-                    <img src="https://i.pinimg.com/474x/26/fb/23/26fb23a0c17874bebddbd042c92e2b34.jpg" alt="">
-                    <img src="https://i.pinimg.com/474x/cf/16/40/cf1640c51e2b423efb92963d4927fe38.jpg" alt="">
-                    <img src="https://i.pinimg.com/474x/32/39/09/323909963e9d2df000c9a53ebd4eee3d.jpg" alt="">
-                    <img src="https://i.pinimg.com/474x/19/f2/5e/19f25e68f7ad277657cca648cc603470.jpg" alt="">
-                    <img src="https://i.pinimg.com/474x/e9/81/f1/e981f11b12219356ab3384097a8639cb.jpg" alt="">
-                    <img src="https://i.pinimg.com/474x/1f/46/97/1f469744ca4fdeaf1f521583a7eaec62.jpg" alt="">
+                    <img src="https://i.pinimg.com/736x/11/41/27/1141274520eb7def6fb75aeaed3eb9e5.jpg" alt="Mixto 1">
+                    <img src="https://i.pinimg.com/736x/2b/a9/e3/2ba9e36c431376cae5d6f61e2c6e1937.jpg">
+                    <img src="https://i.pinimg.com/736x/00/ec/0b/00ec0b03efc08794fa3088ea3e8461a8.jpg">
+                    <img src="https://i.pinimg.com/736x/ac/1f/35/ac1f35bf7f0b6694cbdbd368a14947a6.jpg" alt="Mixto 4">
+                    <img src="https://i.pinimg.com/736x/97/9d/b9/979db9d99eddb607623f846e69dd778b.jpg">
+                    <img src="https://i.pinimg.com/736x/7a/c8/84/7ac8847bf3ddb37bd135511489de047b.jpg" alt="">
+                    <img src="https://i.pinimg.com/736x/71/c6/39/71c6396af2f046833cab8ade0db11538.jpg" alt="">
+                    <img src="https://i.pinimg.com/736x/6c/94/0a/6c940af1236b43e94bd2de2d82940311.jpg" alt="">
+                    <img src="https://i.pinimg.com/736x/ba/ee/bd/baeebdff836f35161a6211e3d8ba7756.jpg" alt="">
+                    <img src="https://i.pinimg.com/736x/97/ad/79/97ad7978b0227ff3637dd5b09ef22ed0.jpg" alt="">
+                    <img src="https://i.pinimg.com/736x/13/11/0b/13110b0e7cbe601d0663ae1f57d0518f.jpg" alt="">
                 </div>
                 <!-------------------------------------------------------------------------------------------------------------------->
                 <hr>
                 <br>
                 <div class="seccion">
-                    <h2>Ganadoras de un Oscár</h2>
+                    <h2>CIENCIA FICCIÓN </h2>
                 </div>
                 <div class="carousel_ex">
                     <div class="carousel-item"
-                        style="background-image: url('https://historiasdelahistoria.com/wp-content/uploads/2016/08/Gladiator-1024x576.jpg');">
+                        style="background-image: url('https://i.pinimg.com/736x/69/c9/26/69c926a20e4c0a337371832376a7f524.jpg');">
                         <div class="content">
-                            <h2>Gladiador</h2>
-                            <p>Un esclavo lucha en la arena por venganza.</p>
+                            <h2>The expanse</h2>
+                            <p>La historia se centra en la tripulación de la cañonera Rocinante y en la investigación de
+                                una conspiración que amenaza la humanidad. </p>
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2016/07/titanic.jpg?tf=3840x');">
+                        style="background-image: url('https://i.pinimg.com/736x/91/be/8b/91be8b37fca9e6f0b08044e3ae22e30c.jpg');">
                         <div class="content">
-                            <h2>Titanic</h2>
-                            <p>Amor prohibido en un barco condenado.</p>
+                            <h2>Donnie Darko</h2>
+                            <p>Tras escapar milagrosamente de una muerte casi segura, comienza a sufrir alucinaciones
+                                que lo llevan a actuar como nunca hubiera imaginado y a descubrir un mundo insólito a su
+                                alrededor.</p>
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://estaticos-cdn.prensaiberica.es/clip/1e5fba97-9ebf-4586-a138-35fa93031fd8_alta-libre-aspect-ratio_default_0.jpg');">
+                        style="background-image: url('https://i.pinimg.com/736x/29/d7/b2/29d7b2317940d2e4157f43940c392da0.jpg');">
                         <div class="content">
-                            <h2>El señor de los anillos: El retorno del Rey</h2>
-                            <p>La batalla final contra Sauron.</p>
+                            <h2>Star trek</h2>
+                            <p>El joven James T. Kirk, Spock y el resto de la tripulación del Enterprise se embarcan en
+                                un curso de colisión con un romulano vengativo.</p>
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://static.nuso.org/media/cache/9d/36/9d36ab92f1de39e7e8dc389b0f908bc0.jpg');">
+                        style="background-image: url('https://i.pinimg.com/736x/91/17/75/9117751636528b25a7b4687cab63572d.jpg');">
                         <div class="content">
-                            <h2>Parásitos</h2>
-                            <p>Una familia pobre engaña a una rica.</p>
+                            <h2>Stranger things</h2>
+                            <p>Un grupo de amigos que se enfrentan a fuerzas sobrenaturales en el pueblo ficticio de
+                                Hawkins, Indiana, en los años 80. </p>
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/cillian-murphy-oppenheimer-65f0869834793.jpg?crop=0.75xw:1xh;center,top&resize=1200:*');">
+                        style="background-image: url('https://i.pinimg.com/736x/e3/a3/57/e3a357ec109d9852ebb4da6d0c4567da.jpg');">
                         <div class="content">
-                            <h2>Oppenheimer</h2>
-                            <p>Creación de la bomba atómica.</p>
+                            <h2>Black mirror</h2>
+                            <p>Historias distópicas y satíricas que exploran la relación entre los humanos y la
+                                tecnología. </p>
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://www.movistarplus.es/recorte/n/fanartweb/F3727603');">
+                        style="background-image: url('https://i.pinimg.com/736x/0e/a7/53/0ea753e5cc5f8587c646d34d793bfde5.jpg');">
                         <div class="content">
-                            <h2>12 años de esclavitud</h2>
-                            <p>Un hombre libre es esclavizado.</p>
+                            <h2>Sandma</h2>
+                            <p>Morfeo, el Rey de los Sueños, quien busca recuperar sus poderes después de ser
+                                encarcelado.</p>
                         </div>
                     </div>
                 </div>
@@ -1432,7 +2006,9 @@
         </footer>
 
         <script>
-            // Menú de hamburguesa
+            window.onload = function () {
+                document.querySelector(".loader-i").classList.add("hidden");
+            };
             const menuIcon = document.getElementById('menuIcon');
             const menu = document.getElementById('menu');
 
@@ -1497,11 +2073,27 @@
                     seccion.scrollLeft = scrollLeft - walk;
                 });
             });
-
-            // Redirección al hacer clic en el botón de perfil
+            //de aqui es el modal de btn_perfil
+            // Obtener elementos del DOM
             const btnMessage = document.getElementById('btn-message');
+            const modalPerfil = document.getElementById('modal-perfil');
+            const closeBtn = document.querySelector('.close');
+
+            // Mostrar el modal al hacer clic en el botón
             btnMessage.addEventListener('click', () => {
-                window.location.href = 'perfil.html'; // Redirige a perfil.html
+                modalPerfil.style.display = 'flex';
+            });
+
+            // Ocultar el modal al hacer clic en el botón de cierre
+            closeBtn.addEventListener('click', () => {
+                modalPerfil.style.display = 'none';
+            });
+
+            // Ocultar el modal al hacer clic fuera del contenido
+            window.addEventListener('click', (event) => {
+                if (event.target === modalPerfil) {
+                    modalPerfil.style.display = 'none';
+                }
             });
 
             // Redirección al hacer clic en el nombre "UNIMIX"
@@ -1509,5 +2101,74 @@
             projectTitle.addEventListener('click', () => {
                 window.location.href = 'index.html'; // Redirige a index.html
             });
+            //Script del modal
+            // Variables para almacenar las selecciones
+            let selectedOptions = [];
+            let selectedPaymentMethod = null;
+
+            // Función para abrir la modal de categorías
+            function openModal() {
+                const modalBackground = document.getElementById('modal-background');
+                modalBackground.style.display = 'flex';
+            }
+
+            // Función para cerrar la modal de categorías
+            function closeModal() {
+                const modalBackground = document.getElementById('modal-background');
+                modalBackground.style.display = 'none';
+            }
+
+            // Función para seleccionar una opción
+            function selectOption(option) {
+                option.classList.toggle('selected');
+                if (option.classList.contains('selected')) {
+                    selectedOptions.push(option.textContent);
+                } else {
+                    selectedOptions = selectedOptions.filter(item => item !== option.textContent);
+                }
+            }
+
+            // Función para confirmar la selección y mostrar la animación de carga
+            function confirmSelection() {
+                if (selectedOptions.length === 0) {
+                    alert('Por favor, selecciona al menos una categoría.');
+                    return;
+                }
+                closeModal();
+                const loader = document.getElementById('loader');
+                loader.style.display = 'flex';
+
+                // Esperar 5 segundos antes de mostrar la modal de pago
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    const paymentModal = document.getElementById('payment-modal');
+                    paymentModal.style.display = 'flex';
+                }, 5000); // 5000 ms = 5 segundos
+            }
+
+            // Función para seleccionar un método de pago
+            function selectPaymentMethod(method) {
+                if (selectedPaymentMethod) {
+                    selectedPaymentMethod.classList.remove('selected');
+                }
+                method.classList.add('selected');
+                selectedPaymentMethod = method.textContent;
+            }
+
+            // Función para cerrar la modal de pago
+            function closePaymentModal() {
+                const paymentModal = document.getElementById('payment-modal');
+                paymentModal.style.display = 'none';
+            }
+
+            // Función para finalizar el pago
+            function finalizePayment() {
+                if (!selectedPaymentMethod) {
+                    alert('Por favor, selecciona un método de pago.');
+                    return;
+                }
+                alert(`Has seleccionado: ${selectedOptions.join(', ')}\nMétodo de pago: ${selectedPaymentMethod}`);
+                closePaymentModal();
+            }
         </script>
 </body>

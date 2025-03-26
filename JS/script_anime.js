@@ -90,7 +90,7 @@ secciones.forEach(seccion => {
         });
 
 // Redirección al hacer clic en el nombre "UNIMIX"
-const projectTitle = document.querySelector('.project-title');
+const projectTitle = document.querySelector('.button-title');
 projectTitle.addEventListener('click', () => {
     window.location.href = 'index.html'; // Redirige a index.html
 });

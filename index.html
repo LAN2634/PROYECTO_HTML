@@ -19,10 +19,9 @@
         /* Menú de hamburguesa fijo */
         header {
             background-color: #1c1c1c;
-            padding: 5px 20px;
+            padding: 20px 20px;
             display: flex;
             align-items: center;
-            /* Centra verticalmente los elementos */
             justify-content: space-between;
             /* Distribuye el espacio entre los elementos */
             position: fixed;
@@ -515,89 +514,157 @@
         }
 
         /*---------------------------------------------------------------------------*/
-        /*follow me*/
-        /* From Uiverse.io by ahmed150up */
-        .card-f {
-            display: flex;
-            height: 70px;
-            width: 270px;
-        }
-
-        .card-f svg {
-            position: absolute;
-            display: flex;
-            width: 60%;
-            height: 100%;
-            font-size: 24px;
-            font-weight: 700;
-            opacity: 1;
-            transition: opacity 0.25s;
-            z-index: 2;
-            cursor: pointer;
-        }
-
-        .card-f .social-link1,
-        .card-f .social-link2,
-        .card-f .social-link3,
-        .card-f .social-link4 {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 25%;
-            color: whitesmoke;
-            font-size: 24px;
-            text-decoration: none;
-            transition: 0.25s;
-            border-radius: 50px;
-        }
-
-        .card.f svg {
-            transform: scale(1);
-        }
-
-        .card-f .social-link1:hover {
-            background: #f09433;
-            background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
-            animation: bounce_613 0.4s linear;
-        }
-
-        .card-f .social-link2:hover {
-            background-color: #00ccff;
-            animation: bounce_613 0.4s linear;
-        }
-
-        .card-f .sal-link3:hover {
-            background-color: #5865f2;
-            animation: bounce_613 0.4s linear;
-        }
-
-        .card-f .social-link4:hover {
-            background-color: #12a50b;
-            animation: bounce_613 0.4s linear;
-        }
-
-        @keyframes bounce_613 {
-            40% {
-                transform: scale(1.4);
-            }
-
-            60% {
-                transform: scale(0.8);
-            }
-
-            80% {
-                transform: scale(1.2);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
+        /* From Uiverse.io by 0xnihilism */ 
+.brutalist-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 170px;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border: 3px solid #fff;
+    outline: 3px solid #000;
+    box-shadow: 6px 6px 0 #ff5733;
+    transition: all 0.1s ease-out;
+    padding: 0 16px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    margin: 50px;
+    display: inline-block;
+    margin-top: -30px;
+  }
+  
+  .brutalist-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    );
+    z-index: 1;
+    transition: none;
+    /* Initially hide the pseudo-element */
+    opacity: 0;
+  }
+  
+  @keyframes slide {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  .brutalist-button:hover::before {
+    /* Show the pseudo-element on hover */
+    opacity: 1;
+    animation: slide 2s infinite;
+  }
+  
+  .brutalist-button:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0 #000;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  @keyframes slide {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  .brutalist-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0 #ff5733;
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+  }
+  
+  /* Rest of the CSS remains the same */
+  
+  .ms-logo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .brutalist-button:hover .ms-logo {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  
+  .brutalist-button:active .ms-logo {
+    transform: rotate(10deg) scale(0.9);
+  }
+  
+  .ms-logo-square {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ms-logo-square:nth-child(1) {
+    background-color: #f25022;
+  }
+  .ms-logo-square:nth-child(2) {
+    background-color: #7fba00;
+  }
+  .ms-logo-square:nth-child(3) {
+    background-color: #00a4ef;
+  }
+  .ms-logo-square:nth-child(4) {
+    background-color: #ffb900;
+  }
+  
+  .button-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    transition: transform 0.2s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .brutalist-button:hover .button-text {
+    transform: skew(-5deg);
+  }
+  
+  .brutalist-button:active .button-text {
+    transform: skew(5deg);
+  }
+  
+  .button-text span:first-child {
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  
+  .button-text span:last-child {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  /*AQUI ARRIVA ESTA EL ESTILO DE EL BOTON DE EL INDEX EN EL MENU*/
         /* Contenedor del carrusel */
         .carousel_ex {
             display: flex;
@@ -648,7 +715,7 @@
         p {
             margin: 5px 0 0;
             font-size: 16px;
-            color: #fff; 
+            color: #fff;
         }
 
         hr {
@@ -1104,43 +1171,276 @@
             background-color: #FF6844;
             transform: scale(1.1);
         }
-        
-/* =======================
+
+        /* =======================
 * LOADER 
 ======================== */
-.loader-i {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
+        F .loader-i {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
 
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid #fff;
-    border-top-color: #ff5733;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #fff;
+            border-top-color: #ff5733;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
 
-/* Ocultar loader cuando la página cargue */
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s;
-}
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Ocultar loader cuando la página cargue */
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        /* From Uiverse.io by satyamchaudharydev */
+        /* === removing default button style ===*/
+        .button-title {
+            margin: 0;
+            height: auto;
+            background: transparent;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* button styling */
+        .button-title {
+            --border-right: 6px;
+            --text-stroke-color: rgba(255, 255, 255, 0.6);
+            --animation-color: #ff7b58;
+            --fs-size: 2em;
+            letter-spacing: 3px;
+            text-decoration: none;
+            font-size: var(--fs-size);
+            font-family: "Arial";
+            position: relative;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-stroke-color);
+        }
+
+        /* this is the text, when you hover on button */
+        .hover-text {
+            position: absolute;
+            box-sizing: border-box;
+            content: attr(data-text);
+            color: var(--animation-color);
+            width: 0%;
+            inset: 0;
+            border-right: var(--border-right) solid var(--animation-color);
+            overflow: hidden;
+            transition: 0.5s;
+            -webkit-text-stroke: 1px var(--animation-color);
+        }
+
+        /* hover */
+        .button-title:hover .hover-text {
+            width: 100%;
+            filter: drop-shadow(0 0 23px var(--animation-color))
+        }
+
+        /*
+  *
+  *
+  *
+  *
+  */
+        /*foother de la pagina*/
+        /* Estilos del footer */
+        footer {
+            background-color: rgb(30, 36, 34);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .footer-section h3 {
+            color: #ff7b58;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #ff7b58;
+        }
+
+        .follow-us {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .follow-us h3 {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+        }
+
+        /* Estilos para los iconos sociales (de Uiverse.io) */
+        .social-login-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            -webkit-box-reflect: below 5px linear-gradient(transparent, #00000055);
+            margin-bottom: 30px;
+        }
+
+        .social-login-icons svg {
+            width: 40px;
+        }
+
+        .social-icon-1,
+        .social-icon-1-1,
+        .social-icon-2,
+        .social-icon-2-2,
+        .social-icon-3,
+        .social-icon-3-3,
+        .social-icon-4,
+        .social-icon-4-4 {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            margin: 20px 0 0px 0;
+        }
+
+        .icon svg {
+            fill: #ddd;
+        }
+
+        .socialcontainer {
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .social-icon-1 {
+            transition-duration: 0.4s;
+            background-color: rgb(0, 0, 0);
+            transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+        }
+
+        .social-icon-1 svg,
+        .social-icon-2 svg,
+        .social-icon-3 svg,
+        .social-icon-4 svg {
+            opacity: 0;
+            transition-duration: 0.5s;
+            transition-delay: 0.2s;
+        }
+
+        .social-icon-1-1 {
+            transition-duration: 0.4s;
+            background-color: rgb(0, 0, 0, 0);
+        }
+
+        .socialcontainer:hover .social-icon-1 {
+            transform: translateY(-70px);
+        }
+
+        .socialcontainer:hover .social-icon-1 svg,
+        .socialcontainer:hover .social-icon-2 svg,
+        .socialcontainer:hover .social-icon-3 svg,
+        .socialcontainer:hover .social-icon-4 svg {
+            opacity: 1;
+        }
+
+        .social-icon-2 {
+            transition-duration: 0.4s;
+            transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+            background: linear-gradient(72.44deg, #ff7a00 11.92%, #ff0169 51.56%, #d300c5 85.69%);
+        }
+
+        .socialcontainer:hover .social-icon-2 {
+            transform: translateY(-70px);
+        }
+
+        .social-icon-3 {
+            transition-duration: 0.4s;
+            transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+            background: #316ff6;
+        }
+
+        .socialcontainer:hover .social-icon-3 {
+            transform: translateY(-70px);
+        }
+
+        .social-icon-4 {
+            transition-duration: 0.4s;
+            transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+            background: linear-gradient(180deg, rgba(129, 34, 144, 1) 0%, rgba(77, 34, 124, 1) 91%);
+        }
+
+        .socialcontainer:hover .social-icon-4 {
+            transform: translateY(-70px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .footer-section {
+                flex: 100%;
+                text-align: center;
+            }
+
+            .social-login-icons {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -1152,7 +1452,11 @@
 
     <!-- Menú de hamburguesa -->
     <header>
-        <h1 class="project-title">UNIMIX</h1>
+        <!-- From Uiverse.io by satyamchaudharydev -->
+        <button class="button-title" data-text="Awesome">
+            <span class="actual-text">&nbsp;UNIMIX&nbsp;</span>
+            <span aria-hidden="true" class="hover-text">&nbsp;UNIMIX&nbsp;</span>
+        </button>
         <div style="display: flex; align-items: center;">
             <button class="button" title="Acceder a herramientas y contenido exclusivo" onclick="openModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
@@ -1210,7 +1514,7 @@
             <div id="payment-modal" class="modal-background">
                 <div class="modal">
                     <h2>Método de Pago</h2>
-                    <div class="modal-option" onclick="selectPaymentMethod(this)">Tarjeta de Crédito</div>
+                    <div class="modal-option" onclick="selectPaymentMethod(this)">Tarjeta de Crédito/Débito</div>
                     <div class="modal-option" onclick="selectPaymentMethod(this)">PayPal</div>
                     <div class="modal-option" onclick="selectPaymentMethod(this)">Criptomonedas</div>
                     <div class="modal-buttons">
@@ -1292,48 +1596,27 @@
                     <li><a href="anime.html">Anime</a></li>
                     <li><a href="peliculas.html">Películas</a></li>
                     <li><a href="musica.html">Música</a></li>
-
+                    <li><a href="series.html">Series</a></li>
                     <li><a href="#">Acerca de</a></li>
                     <hr>
                     <li><a href="https://gam.onl/psx/doom.html#game">Ir a jugar DOOM</a></li>
-                    <li><a href="#">Contáctanos</a></li>
                     <hr>
+                    <li><a href="#">Descarga la App</a></li>
                 </ul>
-                <!-- From Uiverse.io by ahmed150up -->
-                <div class="card-f">
-                    <a class="social-link1">
-                        <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a class="social-link2">
-                        <svg viewBox="0 0 16 16" class="bi bi-twitter" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
-                            </path>
-                        </svg> </a>
-                    <a class="social-link3">
-                        <svg viewBox="0 0 16 16" class="bi bi-discord" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a class="social-link4">
-                        <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
-                            xmlns="http://www.w3.org/2000/svg" style="color: white">
-                            <path fill="white"
-                                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </nav>
+                <!-- From Uiverse.io by 0xnihilism -->
+                <button class="brutalist-button">
+                    <div class="ms-logo">
+                        <div class="ms-logo-square"></div>
+                        <div class="ms-logo-square"></div>
+                        <div class="ms-logo-square"></div>
+                        <div class="ms-logo-square"></div>
+                    </div>
+                    <div class="button-text">
+                        <span>Get it from</span>
+                        <span>Microsoft</span>
+                    </div>
+                </button>
+
     </header>
 
     <!-- Carrusel de imágenes -->
@@ -1418,8 +1701,7 @@
             <h2>Mejores Animes del Momento</h2>
         </div>
         <div class="carousel_ex">
-            <div class="carousel-item"
-                style="background-image: url('https://images.alphacoders.com/121/1212705.png');">
+            <div class="carousel-item" style="background-image: url('https://images.alphacoders.com/121/1212705.png');">
                 <div class="content">
                     <h2>Attack on Titan</h2>
                 </div>
@@ -1629,6 +1911,128 @@
             <img src="https://es.web.img3.acsta.net/c_310_420/pictures/22/04/07/11/43/1839314.jpg" alt="Anime 4">
         </div>
     </div>
+    <hr>
+    <!--foother-->
+    <footer>
+        <div class="follow-us">
+            <h3>Síguenos</h3>
+            <!-- Iconos de redes sociales animados -->
+            <div class="social-login-icons">
+                <!--Twiter-->
+                <div class="socialcontainer">
+                    <a href="https://x.com/?lang=es"">
+                                <div class=" icon social-icon-1-1">
+                        <svg viewBox="0 0 512 512" height="1.7em" xmlns="http://www.w3.org/2000/svg" class="svgIcontwit"
+                            fill="white">
+                            <path
+                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                            </path>
+                        </svg>
+                </div>
+                <div class="social-icon-1">
+                    <svg viewBox="0 0 512 512" height="1.7em" xmlns="http://www.w3.org/2000/svg" class="svgIcontwit"
+                        fill="white">
+                        <path
+                            d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+            </a>
+            <!--Insta-->
+            <div class="socialcontainer">
+                <a href="https://www.instagram.com/">
+                    <div class="icon social-icon-2-2">
+                        <svg fill="white" class="svgIcon" viewBox="0 0 448 512" height="1.5em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-2">
+                        <svg fill="white" class="svgIcon" viewBox="0 0 448 512" height="1.5em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                            </path>
+                        </svg>
+                    </div>
+            </div>
+            </a>
+            <!--Facebook-->
+            <div class="socialcontainer">
+                <a href="https://www.facebook.com/?locale=es_LA">
+                    <div class="icon social-icon-3-3">
+                        <svg viewBox="0 0 384 512" fill="white" height="1.6em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-3">
+                        <svg viewBox="0 0 384 512" fill="white" height="1.6em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z">
+                            </path>
+                        </svg>
+                    </div>
+            </div>
+            </a>
+            <!--Git Hub-->
+            <div class="socialcontainer">
+                <a href="https://github.com/LAN2634/PROYECTO_HTML">
+                    <div class="icon social-icon-4-4">
+                        <svg fill="white" viewBox="0 0 496 512" height="1.6em">
+                            <path
+                                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-4">
+                        <svg fill="white" viewBox="0 0 496 512" height="1.6em">
+                            <path
+                                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                            </path>
+                        </svg>
+                    </div>
+            </div>
+            </a>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Acerca de</h3>
+                <p>Somos una empresa comprometida con ofrecer soluciones digitales innovadoras y de alta calidad
+                    para nuestros clientes.</p>
+            </div>
+            <!--con eso de espacio o ke o mas diganme-->
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#">Inicio</a>
+                <a href="#">Servicios</a>
+                <a href="#">Portafolio</a>
+                <a href="#">Blog</a>
+                <a href="#">Contacto</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Dirección: Denjhi Jilotepec , Ciudad de México</p>
+                <p><i class="fas fa-phone"></i> Teléfono: +(52) 55 4876 6297 </p>
+                <p><i class="fas fa-envelope"></i> Email: alansandoval@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023-2025 Mi Sitio Web. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script>
         window.onload = function () {
             document.querySelector(".loader-i").classList.add("hidden");
@@ -1721,7 +2125,7 @@
             }
         });
         // Redirección al hacer clic en el nombre "UNIMIX"
-        const projectTitle = document.querySelector('.project-title');
+        const projectTitle = document.querySelector('.button-title');
         projectTitle.addEventListener('click', () => {
             window.location.href = 'index.html'; // Redirige a index.html
         });
