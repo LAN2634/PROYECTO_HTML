@@ -1,7 +1,6 @@
 window.onload = function () {
     document.querySelector(".loader-i").classList.add("hidden");
 };
-// Menú de hamburguesa
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
 
@@ -88,6 +87,7 @@ window.addEventListener('click', (event) => {
         modalPerfil.style.display = 'none';
     }
 });
+
 // Redirección al hacer clic en el nombre "UNIMIX"
 const projectTitle = document.querySelector('.button-title');
 projectTitle.addEventListener('click', () => {

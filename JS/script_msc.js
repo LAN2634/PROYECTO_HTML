@@ -1,7 +1,6 @@
 window.onload = function () {
     document.querySelector(".loader-i").classList.add("hidden");
 };
-// Menú de hamburguesa
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
 
@@ -46,26 +45,8 @@ secciones.forEach(seccion => {
         const walk = (x - startX) * 2;
         seccion.scrollLeft = scrollLeft - walk;
     });
-
-    // Soporte para dispositivos táctiles
-    seccion.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - seccion.offsetLeft;
-        scrollLeft = seccion.scrollLeft;
-    });
-
-    seccion.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    seccion.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - seccion.offsetLeft;
-        const walk = (x - startX) * 2;
-        seccion.scrollLeft = scrollLeft - walk;
-    });
 });
+
 //de aqui es el modal de btn_perfil
 // Obtener elementos del DOM
 const btnMessage = document.getElementById('btn-message');
@@ -162,3 +143,19 @@ function finalizePayment() {
     alert(`Has seleccionado: ${selectedOptions.join(', ')}\nMétodo de pago: ${selectedPaymentMethod}`);
     closePaymentModal();
 }
+// Mostrar mensaje con animación de entrada
+setTimeout(() => {
+    loaderMessage.classList.add('show');
+
+    // Ocultar mensaje después de 3 segundos con animación de salida
+    setTimeout(() => {
+        loaderMessage.classList.remove('show');
+        loaderMessage.classList.add('hide');
+
+        // Opcional: Eliminar el mensaje completamente después de la animación
+        setTimeout(() => {
+            loaderMessage.style.display = 'none';
+        }, 500); // Tiempo igual a la duración de la animación
+    }, 3000);
+}, 500); // Pequeño retraso para que el loader sea visible primero
+;

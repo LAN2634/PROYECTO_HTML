@@ -14,17 +14,17 @@ header {
     padding: 20px 20px;
     display: flex;
     align-items: center;
+    /* Centra verticalmente los elementos */
     justify-content: space-between;
+    /* Distribuye el espacio entre los elementos */
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4);
     border-bottom: 2px solid #ff7b58;
-
 }
 
-/* Centrar el título "LIBROS" */
 .project-tite {
     position: absolute;
     left: 50%;
@@ -33,7 +33,6 @@ header {
     font-size: 24px;
 }
 
-/*------------------------------------------------------------------------------------------------*/
 /* Botón Unlock Pro */
 .button {
     width: fit-content;
@@ -52,6 +51,7 @@ header {
     box-shadow: 0 30px 10px -20px rgba(0, 0, 0, .2);
     transition: background .3s ease;
     margin-right: 10px;
+    /* Espacio entre el botón y el ícono de hamburguesa */
 }
 
 .button:hover {
@@ -68,8 +68,6 @@ header {
 .button:hover svg {
     fill: #fff;
 }
-
-/*----------------------------------------------------------------------------------------*/
 
 .menu-icon {
     display: flex;
@@ -125,52 +123,27 @@ header {
     right: 0;
 }
 
-/*--------------------------------------------------------------------------------------------------------*/
-/* Parallax */
-.parallax {
-    height: 100vh;
-    background-image: url('https://regresoakasha.com/wp-content/uploads/2025/01/vecteezy_ancient-magic-book-open-mystical-medieval_21594175.-PORTADA.jpg');
-    /* Imagen de fondo */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-/*------------------------------------------------------------------------*/
 /* Carrusel */
 .carousel-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
     overflow: hidden;
     white-space: nowrap;
+    position: relative;
+    margin-top: 120px;
 }
 
 .carousel-track {
     display: flex;
     gap: 20px;
-    animation: scroll 20s linear infinite;
+    animation: scroll 50s linear infinite;
 }
 
 .carousel-track img {
-    width: auto;
-    height: 300px;
+    width: 800px;
+    height: 400px;
     flex-shrink: 0;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.carousel-track img:hover {
-    transform: translateY(-10px) scale(1.05);
-    /* Efecto de levantar y acercar */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    /* Sombra más pronunciada */
 }
 
 @keyframes scroll {
@@ -179,33 +152,19 @@ header {
     }
 
     to {
-        transform: translateX(-50%);
+        transform: translateX(-275%);
     }
 }
 
-/*----------------------------------------------------------------------------------------------*/
-/* Nube de humo */
-.smoke-effect {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to top, rgba(30, 36, 34, 1), rgba(30, 36, 34, 0));
-    z-index: 1;
-}
-
-/*----------------------------------------------------------------------------------------------*/
-
+/*-------------------------------------------------------------------------------------------------------*/
 /* Secciones de recomendaciones */
 .seccion {
-    margin: 100px 20px;
+    margin: 40px 20px;
 }
 
 .seccion h2 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #fff
 }
 
 .contenedor-recomendaciones {
@@ -229,21 +188,28 @@ header {
     background-color: #333;
 }
 
-.contenedor-recomendaciones img {
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
+.contenedor-recomendaciones iframe {
+    width: 300px;
+    /* Ancho fijo para los iframes */
+    height: 200px;
+    /* Alto fijo para los iframes */
+    border: none;
+    /* Elimina el borde predeterminado */
     border-radius: 10px;
+    /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra */
     transition: transform 0.3s ease;
+    /* Transición para el hover */
 }
 
-.contenedor-recomendaciones img:hover {
+.contenedor-recomendaciones iframe:hover {
     transform: scale(1.05);
+    /* Efecto de escala al pasar el mouse */
 }
 
-/*-------------------------------------------------------------------------------------------------------------*/
-/* ICON PERFIL */
+/*ICON PERFIL*/
+/* From Uiverse.io by Li-Deheng */
 #btn-message {
     --text-color: rgb(255, 255, 255);
     --bg-color-sup: #5e5e5e;
@@ -271,8 +237,6 @@ header {
     position: relative;
     transition: var(--btn-transition);
     margin-right: 100px;
-    background-position: left center;
-
 }
 
 .button-message:hover {
@@ -409,6 +373,7 @@ header {
     border-radius: 20px;
 }
 
+/*==============================================*/
 @keyframes active-status {
     0% {
         background-color: var(--online-status);
@@ -427,7 +392,6 @@ header {
     }
 }
 
-/*-------------------------------------------------------------------------------------*/
 /*Button search*/
 /* From Uiverse.io by satyamchaudharydev */
 /* this is a recreation of twitter search in css */
@@ -556,6 +520,7 @@ input:-webkit-autofill:active {
     -webkit-transition-delay: 9999s;
 }
 
+/*---------------------------------------------------------------------------*/
 /*follow me*/
 /* From Uiverse.io by ahmed150up */
 .card-f {
@@ -639,14 +604,12 @@ input:-webkit-autofill:active {
     }
 }
 
-/*----------------------------------------------------------------------------------------*/
-
 /* Contenedor del carrusel */
 .carousel_ex {
     display: flex;
     gap: 5px;
-    width: 90vw;
-    height: 70vh;
+    width: 96vw;
+    height: 60vh;
 }
 
 /* Elementos del carrusel */
@@ -660,8 +623,6 @@ input:-webkit-autofill:active {
     cursor: pointer;
     transition: flex 0.5s ease;
     position: relative;
-    min-width: 50px;
-    max-width: 600px;
 }
 
 /* Expandir al pasar el cursor */
@@ -676,8 +637,7 @@ input:-webkit-autofill:active {
     bottom: 20px;
     left: 20px;
     color: #ff7b58;
-    transition: opacity 0.3s ease-in-out;
-    min-height: 80px;
+    transition: opacity 0.3s ease;
 }
 
 .carousel-item:hover .content {
@@ -693,18 +653,17 @@ h2 {
 p {
     margin: 5px 0 0;
     font-size: 16px;
-    color: #fff;
 }
 
 hr {
     border: none;
-    /* Elimina el borde predeterminado */
     height: 2px;
     /* Grosor */
     background-color: #ff5733;
     /* Color */
 }
 
+/*-----------------------------------------------------------------------------*/
 /* From Uiverse.io by vinodjangid07 */
 .Btn {
     width: 130px;
@@ -1149,10 +1108,6 @@ hr {
     background-color: #FF6844;
     transform: scale(1.1);
 }
-
-/* =======================
-* LOADER 
-======================== */
 .loader-i {
     position: fixed;
     top: 0;
@@ -1190,41 +1145,6 @@ hr {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s;
-}
-
-/* =======================
-* LOADER 
-======================== */
-F .loader-i {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid #fff;
-    border-top-color: #ff5733;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 /* Ocultar loader cuando la página cargue */
