@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lectura en curso</title>
+    <link rel="stylesheet" href="./CSS/style_pdf.css">
+</head>
+<body style="background-color: #141313; text-align: center;" >
+
+    <div class="container">
+        <header>
+            <h1>Orgullo y Prejuicio</h1>
+            <div style="display: flex; align-items: center; gap: 10px;">
+
+                        <!-- bton de expandir -->
+                    <button onclick="toggleFullScreen()" class="cssbuttons-io">
+                        <span>            
+                        <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px">
+                            <path fill="currentColor" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"></path>
+                        </svg>
+                        </span>
+                    </button>
+
+                    <a href="libros.html">
+                        <button class="cssbuttons-io">
+                            <span>
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path fill="currentColor"
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                                    </path>
+                                </svg>
+                                <h2>Salir</h2>
+                            </span>
+                        </button>
+                    </a>
+
+            </div>
+        </header>
+
+        <div>
+            <iframe src="http://docs.google.com/gview?url=https://web.seducoahuila.gob.mx/biblioweb/upload/orgullo_y_prejuicio.pdf&embedded=true" 
+            style="width: 1080px; height:700px;"  frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script src="./JS/script_pdf.js"></script>
+</body>
+</html>
